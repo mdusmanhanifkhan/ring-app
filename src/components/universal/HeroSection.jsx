@@ -10,61 +10,60 @@ const HeroSection = () => {
   const ringRef = useRef();
   const modelRef = useRef();
   gsap.registerPlugin(ScrollTrigger);
-useEffect(() => {
-  const ctx = gsap.context(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "+=3000",
-        scrub: true,
-      },
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "+=3000",
+          scrub: true,
+        },
+      });
+
+      // 1. Move to the right
+      tl.to(ringRef.current, {
+        x: 400,
+        y: 600,
+        ease: "none",
+      });
+
+      // 2. Slightly down while staying on the right
+      // tl.to(ringRef.current, {
+      //   x: 350,
+      //   y: 1100,
+      //   ease: "none",
+      // });
+
+      // 3. Come diagonally back to the center
+      tl.to(ringRef.current, {
+        x: -30,
+        y: 1300,
+        ease: "none",
+      });
+
+      // 4. Reach the center
+      tl.to(ringRef.current, {
+        x: 0,
+        y: 1950,
+        ease: "none",
+      });
+
+      // 5. Move straight down
+      tl.to(ringRef.current, {
+        x: 0,
+        y: 2600,
+        ease: "none",
+      });
     });
 
-    // 1. Move to the right
-    tl.to(ringRef.current, {
-      x: 400,
-      y: 600,
-      ease: "none",
-    });
-
-    // 2. Slightly down while staying on the right
-    // tl.to(ringRef.current, {
-    //   x: 350,
-    //   y: 1100,
-    //   ease: "none",
-    // });
-
-    // 3. Come diagonally back to the center
-    tl.to(ringRef.current, {
-      x: -30,
-      y: 1300,
-      ease: "none",
-    });
-
-    // 4. Reach the center
-    tl.to(ringRef.current, {
-      x: 0,
-      y: 1950,
-      ease: "none",
-    });
-
-    // 5. Move straight down
-    tl.to(ringRef.current, {
-      x: 0,
-      y: 2600,
-      ease: "none",
-    });
-  });
-
-  return () => ctx.revert();
-}, []);
-
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div className="w-full h-full">
       <Header />
-      <div className="relative w-full h-screen" ref={sectionRef}>
+      <div className="relative w-full h-screen z-20" ref={sectionRef}>
         {/* <span className="w-full h-20 bg-[#0F1014] blur-sm absolute -b"></span> */}
         <div
           className="absolute -top-72 left-1/2 -translate-x-1/2 w-full h-125
