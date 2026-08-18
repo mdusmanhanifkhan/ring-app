@@ -33,29 +33,61 @@ function App() {
 
   return (
     <div className="flex flex-col gap-30 overflow-clip relative h-auto">
-      <div className="bg-[#5C698A] blur-[200px] w-142 h-142 absolute top-237.5 rounded-full z-0 -left-80"></div>
-      <div className="bg-[#5C698A] blur-[200px] w-100 h-100 absolute top-362.5 rounded-full z-0 -right-80"></div>
-      <div className="bg-[#5C698A] blur-[200px] w-100 h-100 absolute top-462.5 rounded-full z-0  left-1/2 -translate-x-1/2"></div>
+      <div className="bg-[#5C698A] blur-[200px] w-142 h-142 absolute top-237.5 rounded-full z-0 -right-80"></div>
+      {/* <div className="bg-[#5C698A] blur-[200px] w-100 h-100 absolute top-362.5 rounded-full z-0 -right-80"></div> */}
+      <div className="bg-[#5C698A] blur-[200px] w-100 h-100 absolute top-362.5 rounded-full z-0 -left-80"></div>
+      {/* <div className="bg-[#5C698A] blur-[200px] w-100 h-100 absolute top-462.5 rounded-full z-0  left-1/2 -translate-x-1/2"></div> */}
       <HeroSection />
+      {/* Second Section */}
       <div className="container mx-auto flex items-center gap-20 relative z-20">
         {/* LEFT CONTENT */}
-        <div className="flex flex-col gap-6 max-w-125 text-white">
-          <p className="text-sm tracking-widest text-gray-400 uppercase">
-            New Collection
-          </p>
+        <div className="max-w-xl">
+          {/* Small Label */}
+          <div className="mb-5 flex items-center gap-3">
+            <span className="h-px w-10 bg-[#c9a86a]" />
 
-          <h2 className="text-5xl font-semibold leading-tight">
-            A New Way Of Thinking
+            <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#c9a86a]">
+              The New Collection
+            </span>
+          </div>
+
+          {/* Heading */}
+          <h2 className="text-5xl font-light leading-[1.05] tracking-[-0.03em] text-white md:text-6xl">
+            Designed to Be
+            <br />
+            <span className="font-serif italic text-[#d6b477]">Remembered</span>
           </h2>
 
-          <p className="text-gray-300 text-lg leading-relaxed">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever.
+          {/* Description */}
+          <p className="mt-7 max-w-md text-[15px] font-light leading-7 tracking-wide text-slate-300">
+            Discover timeless pieces crafted with precision, elegance, and a
+            passion for every detail.
           </p>
 
-          <button className="mt-4 px-6 py-3 bg-white text-black rounded-full w-fit hover:bg-gray-200 transition">
-            Explore More
+          {/* Button */}
+          <button
+            className="group mt-8 inline-flex items-center gap-5 rounded-full bg-white px-7 py-3.5
+      text-sm
+      font-medium
+      text-black
+      transition-all
+      duration-300
+      hover:bg-[#d6b477]
+      hover:shadow-[0_0_30px_rgba(214,180,119,0.25)]
+    "
+          >
+            <span>Explore Collection</span>
+
+            <span
+              className="
+        text-lg
+        transition-transform
+        duration-300
+        group-hover:translate-x-1
+      "
+            >
+              →
+            </span>
           </button>
         </div>
 
@@ -66,7 +98,7 @@ function App() {
           </div>
         </div>
       </div>
-
+      {/* Third Section */}
       <div className="container mx-auto w-full">
         <div className="text-white text-center mt-10 w-full flex flex-col gap-5 justify-center items-center">
           <p className="text-3xl font-semibold">New Way Of Thinking</p>
@@ -77,8 +109,29 @@ function App() {
           </p>
         </div>
 
-        <div className="w-100 h-170">{/* ring */}</div>
+     <div className="relative mx-auto h-170 w-170 mt-5">
+  <div
+    className="
+      relative
+      z-10
+      h-full
+      w-full
+      rounded-full
+      bg-[#a78554]
+      before:absolute
+      before:top-[1px]
+      before:left-[-0.2px]
+      before:h-full
+      before:w-full
+      before:rounded-full
+      before:bg-black
+      before:content-['']
+      before:-z-10
+    "
+  />
+</div>
       </div>
+
       <section className="sticky top-0 h-screen z-10 bg-black">
         <div className="container mx-auto flex items-center gap-20 relative z-20">
           {/* LEFT CONTENT */}
@@ -106,8 +159,6 @@ function App() {
           <div className="flex-1 flex justify-center">
             <div className="w-100 h-250"></div>
           </div>
-
-          {/* RIGHT SIDE (RING) */}
 
           <div className="flex flex-col gap-6 max-w-200 text-white">
             <p className="text-sm tracking-widest text-gray-400 uppercase">

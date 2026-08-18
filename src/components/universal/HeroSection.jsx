@@ -63,20 +63,15 @@ const HeroSection = () => {
   return (
     <div className="w-full h-full">
       <Header />
-      <div className="relative w-full h-screen z-20" ref={sectionRef}>
-        {/* <span className="w-full h-20 bg-[#0F1014] blur-sm absolute -b"></span> */}
+      <div className="relative w-full h-screen" ref={sectionRef}>
+        {/* <span className="w-full h-20 bg-[#0F1014] blur-sm absolute -bottom-10"></span> */}
         <div
-          className="absolute -top-72 left-1/2 -translate-x-1/2 w-full h-125
+          className="absolute -top-12 left-1/2 -translate-x-1/2 w-full h-125
   bg-[radial-gradient(circle,rgba(33,82,141,0.6)_0%,rgba(33,82,141,0.3)_20%,rgba(0,0,0,0)_120%)]
   blur-2xl"
         ></div>
-        {/* <div
-          className="absolute -top-72 left-1/2 -translate-x-1/2 w-full h-125
-  bg-[radial-gradient(circle,_rgba(33,82,141,0.6)_0%,_rgba(33,82,141,0.3)_20%,_rgba(0,0,0,0)_120%)]
-  blur-2xl"
-        ></div> */}
 
-        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 z-50">
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2">
           <div className="w-232.75 h-130">
             <img
               src="/images/bg-dot.png"
@@ -91,12 +86,17 @@ const HeroSection = () => {
           alt=""
         />
 
-        <div className="text-white flex flex-col justify-center items-center pt-36">
-          <p className="text-[60px] font-semibold">New Way Of Thinking</p>
-          <p className="max-w-200 text-center text-[16px]">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever
+        <div className="text-white flex flex-col justify-center items-center pt-56 relative z-10">
+          <span className="text-[10px] font-medium uppercase tracking-[0.35em] text-[#8fa8c4] sm:text-[11px] sm:tracking-[0.4em]">
+            Timeless • Refined • Iconic
+          </span>
+          <h1 className="max-w-5xl text-[42px] font-semibold leading-[1.05] tracking-[-0.04em] text-[#dce7f5] sm:text-[56px] md:text-[68px] lg:text-[76px] font-serif italic">
+            Crafted to Be
+            <span className="text-[#a78554]"> Your Forever</span>
+          </h1>
+          <p className="max-w-2xl text-[14px] leading-6 text-[#91a5bc] sm:text-[15px] sm:leading-7 md:text-[16px] text-center">
+            Discover beautifully crafted engagement and fine jewelry rings
+            designed to celebrate the moments that last a lifetime.
           </p>
         </div>
 

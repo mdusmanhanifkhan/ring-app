@@ -55,7 +55,7 @@ export function Model(props) {
             />
           </mesh>
         </group>
-        rgba(0, 0, 0, 1)
+        {/* rgba(0, 0, 0, 1) */}
       </group>
     </PresentationControls>
   );
