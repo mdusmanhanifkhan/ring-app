@@ -7,15 +7,21 @@ import ringImage from "/images/ring.png";
 import contactUsSectionImage from "/images/contact-us-section-image.png";
 
 function App() {
-  const galleryRef = useRef(null);
   const eclipseSectionRef = useRef(null);
   const sunCircleRef = useRef(null);
   const ringWrapperRef = useRef(null);
+
+  const galleryRef = useRef(null);
+  const gallerySectionRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
+      // ==========================================
+      // YOUR ECLIPSE ANIMATION
+      // ==========================================
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: eclipseSectionRef.current,
@@ -27,10 +33,6 @@ function App() {
         },
       });
 
-      /*
-       * PHASE 1
-       * Ring enters from the right
-       */
       tl.fromTo(
         ringWrapperRef.current,
         {
@@ -47,10 +49,6 @@ function App() {
         },
       );
 
-      /*
-       * PHASE 2
-       * Eclipse starts appearing BEHIND the ring
-       */
       tl.fromTo(
         sunCircleRef.current,
         {
@@ -66,29 +64,53 @@ function App() {
         "<",
       );
 
-      /*
-       * PHASE 3
-       * Ring reaches the center.
-       * Eclipse becomes strongest.
-       */
       tl.to(sunCircleRef.current, {
         scale: 1.5,
-        // opacity: 1,
         duration: 0.2,
         ease: "none",
       });
 
-      /*
-       * PHASE 4
-       * Golden eclipse expands and disappears
-       */
       tl.to(sunCircleRef.current, {
         scale: 1.55,
-        // opacity: 0,
         duration: 0.2,
         ease: "none",
       });
-    }, eclipseSectionRef);
+
+      // ==========================================
+      // HORIZONTAL PRODUCT SCROLL
+      // ==========================================
+
+      const gallery = galleryRef.current;
+      const gallerySection = gallerySectionRef.current;
+
+      if (gallery && gallerySection) {
+        const getScrollAmount = () => {
+          return gallery.scrollWidth - window.innerWidth;
+        };
+
+        gsap.to(gallery, {
+          x: () => -getScrollAmount(),
+
+          ease: "none",
+
+          scrollTrigger: {
+            trigger: gallerySection,
+
+            start: "top top",
+
+            end: () => `+=${getScrollAmount()}`,
+
+            scrub: 1,
+
+            pin: true,
+
+            anticipatePin: 1,
+
+            invalidateOnRefresh: true,
+          },
+        });
+      }
+    });
 
     return () => {
       ctx.revert();
@@ -412,15 +434,14 @@ function App() {
         </div>
       </section>
 
-    {/* =========================================
+      {/* =========================================
     PREMIUM COLLECTION SECTION
 ========================================= */}
 
-<section className="sticky top-0 z-10 h-screen overflow-hidden bg-black">
-
-  {/* Subtle center atmosphere */}
-  <div
-    className="
+      <section className="sticky top-0 z-10 h-screen overflow-hidden bg-black">
+        {/* Subtle center atmosphere */}
+        <div
+          className="
       pointer-events-none
       absolute
       left-1/2
@@ -433,11 +454,11 @@ function App() {
       bg-[#d6b477]/[0.025]
       blur-[120px]
     "
-  />
+        />
 
-  {/* Very subtle side glow */}
-  <div
-    className="
+        {/* Very subtle side glow */}
+        <div
+          className="
       pointer-events-none
       absolute
       left-1/2
@@ -449,10 +470,10 @@ function App() {
       rounded-full
       bg-[radial-gradient(ellipse,rgba(214,180,119,0.035)_0%,transparent_70%)]
     "
-  />
+        />
 
-  <div
-    className="
+        <div
+          className="
       relative
       z-20
       container
@@ -464,36 +485,32 @@ function App() {
       px-6
       lg:gap-20
     "
-  >
-
-    {/* =====================================
+        >
+          {/* =====================================
         LEFT CONTENT
     ===================================== */}
 
-    <div className="flex w-[30%] flex-col items-start text-white">
+          <div className="flex w-[30%] flex-col items-start text-white">
+            {/* Label */}
+            <div className="mb-6 flex items-center gap-3">
+              <span className="h-px w-8 bg-[#d6b477]/70" />
 
-      {/* Label */}
-      <div className="mb-6 flex items-center gap-3">
-
-        <span className="h-px w-8 bg-[#d6b477]/70" />
-
-        <span
-          className="
+              <span
+                className="
             text-[10px]
             font-medium
             uppercase
             tracking-[0.32em]
             text-[#d6b477]
           "
-        >
-          The New Collection
-        </span>
+              >
+                The New Collection
+              </span>
+            </div>
 
-      </div>
-
-      {/* Heading */}
-      <h2
-        className="
+            {/* Heading */}
+            <h2
+              className="
           max-w-md
           text-4xl
           font-light
@@ -503,38 +520,32 @@ function App() {
           md:text-5xl
           lg:text-[54px]
         "
-      >
-        Designed to Be
-
-        <br />
-
-        <span
-          className="
+            >
+              Designed to Be
+              <br />
+              <span
+                className="
             font-serif
             italic
             text-[#d6b477]
           "
-        >
-          Remembered
-        </span>
-      </h2>
+              >
+                Remembered
+              </span>
+            </h2>
 
-      {/* Decorative detail */}
-      <div className="mt-6 flex items-center gap-2">
+            {/* Decorative detail */}
+            <div className="mt-6 flex items-center gap-2">
+              <span className="h-px w-12 bg-white/10" />
 
-        <span className="h-px w-12 bg-white/10" />
+              <span className="text-[9px] text-[#d6b477]">✦</span>
 
-        <span className="text-[9px] text-[#d6b477]">
-          ✦
-        </span>
+              <span className="h-px w-12 bg-white/10" />
+            </div>
 
-        <span className="h-px w-12 bg-white/10" />
-
-      </div>
-
-      {/* Description */}
-      <p
-        className="
+            {/* Description */}
+            <p
+              className="
           mt-6
           max-w-sm
           text-[14px]
@@ -543,14 +554,14 @@ function App() {
           tracking-wide
           text-white/55
         "
-      >
-        Discover timeless pieces crafted with precision,
-        elegance, and a passion for every detail.
-      </p>
+            >
+              Discover timeless pieces crafted with precision, elegance, and a
+              passion for every detail.
+            </p>
 
-      {/* Button */}
-      <button
-        className="
+            {/* Button */}
+            <button
+              className="
           group
           mt-8
           inline-flex
@@ -568,54 +579,49 @@ function App() {
           hover:bg-[#d6b477]
           hover:shadow-[0_0_35px_rgba(214,180,119,0.18)]
         "
-      >
-        <span>
-          Explore Collection
-        </span>
+            >
+              <span>Explore Collection</span>
 
-        <span
-          className="
+              <span
+                className="
             text-lg
             transition-transform
             duration-300
             group-hover:translate-x-1
           "
-        >
-          →
-        </span>
-      </button>
+              >
+                →
+              </span>
+            </button>
+          </div>
 
-    </div>
-
-
-    {/* =====================================
+          {/* =====================================
         CENTER — RING
     ===================================== */}
 
-    <div className="relative flex h-full flex-1 items-center justify-center">
+          <div className="relative flex h-full flex-1 items-center justify-center">
+            {/* Center golden aura */}
 
-      {/* Center golden aura */}
-
-      <div
-        className="
+            <div
+              className="
           pointer-events-none
           absolute
           left-1/2
           top-1/2
-          h-[430px]
-          w-[430px]
+          h-107.5
+          w-107.5
           -translate-x-1/2
           -translate-y-1/2
           rounded-full
           bg-[radial-gradient(circle,rgba(214,180,119,0.06)_0%,rgba(214,180,119,0.025)_35%,transparent_70%)]
           blur-2xl
         "
-      />
+            />
 
-      {/* Outer decorative ring */}
+            {/* Outer decorative ring */}
 
-      <div
-        className="
+            <div
+              className="
           pointer-events-none
           absolute
           left-1/2
@@ -628,12 +634,12 @@ function App() {
           border
           border-[#d6b477]/[0.06]
         "
-      />
+            />
 
-      {/* Inner decorative ring */}
+            {/* Inner decorative ring */}
 
-      <div
-        className="
+            <div
+              className="
           pointer-events-none
           absolute
           left-1/2
@@ -646,15 +652,15 @@ function App() {
           border
           border-white/[0.025]
         "
-      />
+            />
 
-      {/* =================================
+            {/* =================================
           YOUR 3D RING
       ================================= */}
 
-      <div
-        ref={ringWrapperRef}
-        className="
+            <div
+              ref={ringWrapperRef}
+              className="
           relative
           z-20
           flex
@@ -663,22 +669,20 @@ function App() {
           items-center
           justify-center
         "
-      >
+            >
+              {/* PUT YOUR EXISTING CANVAS HERE */}
 
-        {/* PUT YOUR EXISTING CANVAS HERE */}
-
-        {/*
+              {/*
         <Canvas>
           ...
         </Canvas>
         */}
+            </div>
 
-      </div>
+            {/* Ground reflection / light */}
 
-      {/* Ground reflection / light */}
-
-      <div
-        className="
+            <div
+              className="
           pointer-events-none
           absolute
           bottom-[18%]
@@ -691,10 +695,10 @@ function App() {
           bg-[#d6b477]/10
           blur-[35px]
         "
-      />
+            />
 
-      <div
-        className="
+            <div
+              className="
           pointer-events-none
           absolute
           bottom-[17%]
@@ -709,39 +713,34 @@ function App() {
           to-transparent
           blur-[1px]
         "
-      />
+            />
+          </div>
 
-    </div>
-
-
-    {/* =====================================
+          {/* =====================================
         RIGHT CONTENT
     ===================================== */}
 
-    <div className="flex w-[30%] flex-col items-start text-white">
+          <div className="flex w-[30%] flex-col items-start text-white">
+            {/* Label */}
+            <div className="mb-6 flex items-center gap-3">
+              <span className="h-px w-8 bg-[#d6b477]/70" />
 
-      {/* Label */}
-      <div className="mb-6 flex items-center gap-3">
-
-        <span className="h-px w-8 bg-[#d6b477]/70" />
-
-        <span
-          className="
+              <span
+                className="
             text-[10px]
             font-medium
             uppercase
             tracking-[0.32em]
             text-[#d6b477]
           "
-        >
-          The New Collection
-        </span>
+              >
+                The New Collection
+              </span>
+            </div>
 
-      </div>
-
-      {/* Heading */}
-      <h2
-        className="
+            {/* Heading */}
+            <h2
+              className="
           max-w-md
           text-4xl
           font-light
@@ -751,38 +750,32 @@ function App() {
           md:text-5xl
           lg:text-[54px]
         "
-      >
-        Designed to Be
-
-        <br />
-
-        <span
-          className="
+            >
+              Designed to Be
+              <br />
+              <span
+                className="
             font-serif
             italic
             text-[#d6b477]
           "
-        >
-          Remembered
-        </span>
-      </h2>
+              >
+                Remembered
+              </span>
+            </h2>
 
-      {/* Decorative detail */}
-      <div className="mt-6 flex items-center gap-2">
+            {/* Decorative detail */}
+            <div className="mt-6 flex items-center gap-2">
+              <span className="h-px w-12 bg-white/10" />
 
-        <span className="h-px w-12 bg-white/10" />
+              <span className="text-[9px] text-[#d6b477]">✦</span>
 
-        <span className="text-[9px] text-[#d6b477]">
-          ✦
-        </span>
+              <span className="h-px w-12 bg-white/10" />
+            </div>
 
-        <span className="h-px w-12 bg-white/10" />
-
-      </div>
-
-      {/* Description */}
-      <p
-        className="
+            {/* Description */}
+            <p
+              className="
           mt-6
           max-w-sm
           text-[14px]
@@ -791,14 +784,14 @@ function App() {
           tracking-wide
           text-white/55
         "
-      >
-        Discover timeless pieces crafted with precision,
-        elegance, and a passion for every detail.
-      </p>
+            >
+              Discover timeless pieces crafted with precision, elegance, and a
+              passion for every detail.
+            </p>
 
-      {/* Button */}
-      <button
-        className="
+            {/* Button */}
+            <button
+              className="
           group
           mt-8
           inline-flex
@@ -816,38 +809,33 @@ function App() {
           hover:bg-[#d6b477]
           hover:shadow-[0_0_35px_rgba(214,180,119,0.18)]
         "
-      >
-        <span>
-          Explore Collection
-        </span>
+            >
+              <span>Explore Collection</span>
 
-        <span
-          className="
+              <span
+                className="
             text-lg
             transition-transform
             duration-300
             group-hover:translate-x-1
           "
-        >
-          →
-        </span>
-      </button>
-
-    </div>
-
-  </div>
-</section>
+              >
+                →
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
 
       <section className="relative z-20 bg-[#111]">
-       {/* =========================================
+        {/* =========================================
     CRAFTSMANSHIP SECTION
 ========================================= */}
 
-<section className="relative bg-[#111111] py-24 overflow-hidden">
-
-  {/* Background atmosphere */}
-  <div
-    className="
+        <section className="relative bg-[#111111] py-24 overflow-hidden">
+          {/* Background atmosphere */}
+          <div
+            className="
       pointer-events-none
       absolute
       left-[-180px]
@@ -859,10 +847,10 @@ function App() {
       bg-[#d6b477]/[0.025]
       blur-[130px]
     "
-  />
+          />
 
-  <div
-    className="
+          <div
+            className="
       pointer-events-none
       absolute
       right-[-180px]
@@ -873,22 +861,19 @@ function App() {
       bg-[#d6b477]/[0.02]
       blur-[130px]
     "
-  />
+          />
 
-  <div className="container relative z-10 mx-auto w-full px-6">
-
-    <div className="flex items-center justify-center gap-12 lg:gap-14">
-
-      {/* =====================================
+          <div className="container relative z-10 mx-auto w-full px-6">
+            <div className="flex items-center justify-center gap-12 lg:gap-14">
+              {/* =====================================
           LEFT — IMAGE GALLERY
       ===================================== */}
 
-      <div className="flex shrink-0 gap-4">
+              <div className="flex shrink-0 gap-4">
+                {/* Main Image */}
 
-        {/* Main Image */}
-
-        <div
-          className="
+                <div
+                  className="
             group
             relative
             h-[430px]
@@ -899,12 +884,11 @@ function App() {
             border-white/10
             bg-black
           "
-        >
-
-          <img
-            src="/images/craftsmanship-main.png"
-            alt="Handcrafted luxury ring"
-            className="
+                >
+                  <img
+                    src="/images/craftsmanship-main.png"
+                    alt="Handcrafted luxury ring"
+                    className="
               h-full
               w-full
               object-cover
@@ -912,12 +896,12 @@ function App() {
               duration-700
               group-hover:scale-[1.03]
             "
-          />
+                  />
 
-          {/* Image overlay */}
+                  {/* Image overlay */}
 
-          <div
-            className="
+                  <div
+                    className="
               pointer-events-none
               absolute
               inset-0
@@ -926,12 +910,12 @@ function App() {
               via-transparent
               to-transparent
             "
-          />
+                  />
 
-          {/* Gold corner accent */}
+                  {/* Gold corner accent */}
 
-          <div
-            className="
+                  <div
+                    className="
               pointer-events-none
               absolute
               bottom-4
@@ -942,10 +926,10 @@ function App() {
               border-l
               border-[#d6b477]/50
             "
-          />
+                  />
 
-          <div
-            className="
+                  <div
+                    className="
               pointer-events-none
               absolute
               right-4
@@ -956,25 +940,22 @@ function App() {
               border-t
               border-[#d6b477]/50
             "
-          />
+                  />
+                </div>
 
-        </div>
-
-
-        {/* =================================
+                {/* =================================
             THUMBNAILS
         ================================= */}
 
-        <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4">
+                  {/* Thumbnail 01 */}
 
-          {/* Thumbnail 01 */}
-
-          <div
-            className="
+                  <div
+                    className="
               group
               relative
               h-[137px]
-              w-[110px]
+              w-[137px]
               cursor-pointer
               overflow-hidden
               rounded-xl
@@ -985,12 +966,11 @@ function App() {
               duration-300
               hover:border-[#d6b477]/60
             "
-          >
-
-            <img
-              src="/images/craftsmanship-detail-1.png"
-              alt="Luxury ring detail"
-              className="
+                  >
+                    <img
+                      src="/images/craftsmanship-detail-1.png"
+                      alt="Luxury ring detail"
+                      className="
                 h-full
                 w-full
                 object-cover
@@ -998,29 +978,27 @@ function App() {
                 duration-500
                 group-hover:scale-110
               "
-            />
+                    />
 
-            <div
-              className="
+                    <div
+                      className="
                 absolute
                 inset-0
                 bg-black/10
                 transition
                 group-hover:bg-transparent
               "
-            />
+                    />
+                  </div>
 
-          </div>
+                  {/* Thumbnail 02 */}
 
-
-          {/* Thumbnail 02 */}
-
-          <div
-            className="
+                  <div
+                    className="
               group
               relative
               h-[137px]
-              w-[110px]
+              w-[137px]
               cursor-pointer
               overflow-hidden
               rounded-xl
@@ -1031,12 +1009,11 @@ function App() {
               duration-300
               hover:border-[#d6b477]/60
             "
-          >
-
-            <img
-              src="/images/craftsmanship-detail-2.png"
-              alt="Jewelry craftsmanship"
-              className="
+                  >
+                    <img
+                      src="/images/craftsmanship-detail-2.png"
+                      alt="Jewelry craftsmanship"
+                      className="
                 h-full
                 w-full
                 object-cover
@@ -1044,29 +1021,27 @@ function App() {
                 duration-500
                 group-hover:scale-110
               "
-            />
+                    />
 
-            <div
-              className="
+                    <div
+                      className="
                 absolute
                 inset-0
                 bg-black/10
                 transition
                 group-hover:bg-transparent
               "
-            />
+                    />
+                  </div>
 
-          </div>
+                  {/* Thumbnail 03 */}
 
-
-          {/* Thumbnail 03 */}
-
-          <div
-            className="
+                  <div
+                    className="
               group
               relative
               h-[137px]
-              w-[110px]
+              w-[137px]
               cursor-pointer
               overflow-hidden
               rounded-xl
@@ -1077,12 +1052,11 @@ function App() {
               duration-300
               hover:border-[#d6b477]/60
             "
-          >
-
-            <img
-              src="/images/craftsmanship-detail-3.png"
-              alt="Handcrafted ring detail"
-              className="
+                  >
+                    <img
+                      src="/images/craftsmanship-detail-3.png"
+                      alt="Handcrafted ring detail"
+                      className="
                 h-full
                 w-full
                 object-cover
@@ -1090,56 +1064,48 @@ function App() {
                 duration-500
                 group-hover:scale-110
               "
-            />
+                    />
 
-            <div
-              className="
+                    <div
+                      className="
                 absolute
                 inset-0
                 bg-black/10
                 transition
                 group-hover:bg-transparent
               "
-            />
+                    />
+                  </div>
+                </div>
+              </div>
 
-          </div>
-
-        </div>
-
-      </div>
-
-
-      {/* =====================================
+              {/* =====================================
           RIGHT — CONTENT
       ===================================== */}
 
-      <div className="flex w-full max-w-[560px] flex-col items-start">
+              <div className="flex w-full max-w-[560px] flex-col items-start">
+                {/* Label */}
 
-        {/* Label */}
+                <div className="mb-5 flex items-center gap-3">
+                  <span className="h-px w-8 bg-[#d6b477]" />
 
-        <div className="mb-5 flex items-center gap-3">
-
-          <span className="h-px w-8 bg-[#d6b477]" />
-
-          <p
-            className="
+                  <p
+                    className="
               text-[11px]
               font-medium
               uppercase
               tracking-[0.3em]
               text-[#d6b477]
             "
-          >
-            Our Craftsmanship
-          </p>
+                  >
+                    Our Craftsmanship
+                  </p>
+                </div>
 
-        </div>
+                {/* Heading */}
 
-
-        {/* Heading */}
-
-        <h2
-          className="
+                <h2
+                  className="
             font-serif
             text-[48px]
             font-medium
@@ -1148,35 +1114,28 @@ function App() {
             text-white
             lg:text-[54px]
           "
-        >
-          Built On Passion,
-          <br />
+                >
+                  Built On Passion,
+                  <br />
+                  <span className="italic text-[#f0eee9]">
+                    Crafted to Perfection
+                  </span>
+                </h2>
 
-          <span className="italic text-[#f0eee9]">
-            Crafted to Perfection
-          </span>
-        </h2>
+                {/* Decorative line */}
 
+                <div className="mt-6 flex items-center gap-2">
+                  <span className="h-px w-16 bg-[#d6b477]/60" />
 
-        {/* Decorative line */}
+                  <span className="text-[10px] text-[#d6b477]">✦</span>
 
-        <div className="mt-6 flex items-center gap-2">
+                  <span className="h-px w-8 bg-[#d6b477]/20" />
+                </div>
 
-          <span className="h-px w-16 bg-[#d6b477]/60" />
+                {/* Description */}
 
-          <span className="text-[10px] text-[#d6b477]">
-            ✦
-          </span>
-
-          <span className="h-px w-8 bg-[#d6b477]/20" />
-
-        </div>
-
-
-        {/* Description */}
-
-        <p
-          className="
+                <p
+                  className="
             mt-7
             max-w-[520px]
             text-[15px]
@@ -1185,15 +1144,15 @@ function App() {
             tracking-wide
             text-white/60
           "
-        >
-          Every piece we create is a reflection of our dedication
-          to excellence. From the finest materials to masterful
-          craftsmanship, we bring passion, precision, and purpose
-          into every detail.
-        </p>
+                >
+                  Every piece we create is a reflection of our dedication to
+                  excellence. From the finest materials to masterful
+                  craftsmanship, we bring passion, precision, and purpose into
+                  every detail.
+                </p>
 
-        <p
-          className="
+                <p
+                  className="
             mt-2
             max-w-[520px]
             text-[15px]
@@ -1202,15 +1161,14 @@ function App() {
             tracking-wide
             text-white/60
           "
-        >
-          Because true beauty is never rushed — it's crafted.
-        </p>
+                >
+                  Because true beauty is never rushed — it's crafted.
+                </p>
 
+                {/* Button */}
 
-        {/* Button */}
-
-        <button
-          className="
+                <button
+                  className="
             group
             mt-8
             inline-flex
@@ -1228,24 +1186,691 @@ function App() {
             hover:bg-[#d6b477]
             hover:shadow-[0_0_30px_rgba(214,180,119,0.15)]
           "
-        >
+                >
+                  <span>Explore More</span>
 
-          <span>
-            Explore More
-          </span>
-
-          <span
-            className="
+                  <span
+                    className="
               text-lg
               transition-transform
               duration-300
               group-hover:translate-x-1
             "
+                  >
+                    →
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================
+    PREMIUM BEST SELLER SECTION
+========================================= */}
+
+        <div
+          ref={gallerySectionRef}
+          className="
+    relative
+    flex
+    h-screen
+    w-full
+    flex-col
+    justify-center
+    overflow-hidden
+    bg-[#111111]
+  "
+        >
+          {/* =========================================
+      BACKGROUND ATMOSPHERE
+  ========================================= */}
+
+          <div
+            className="
+      pointer-events-none
+      absolute
+      left-1/2
+      top-1/2
+      h-[700px]
+      w-[1100px]
+      -translate-x-1/2
+      -translate-y-1/2
+      rounded-full
+      bg-[#d6b477]/[0.025]
+      blur-[140px]
+    "
+          />
+
+          <div
+            className="
+      pointer-events-none
+      absolute
+      left-0
+      top-1/2
+      h-[350px]
+      w-[350px]
+      -translate-y-1/2
+      rounded-full
+      bg-[#5C698A]/[0.04]
+      blur-[120px]
+    "
+          />
+
+          {/* =========================================
+      TITLE
+  ========================================= */}
+
+          <div
+            className="
+      relative
+      z-10
+      mx-auto
+      w-full
+      max-w-5xl
+      px-6
+      text-center
+    "
           >
-            →
+            {/* Label */}
+
+            <p
+              className="
+        text-[11px]
+        font-medium
+        uppercase
+        tracking-[0.4em]
+        text-[#d6b477]
+      "
+            >
+              Best Seller
+            </p>
+
+            {/* Heading */}
+
+            <h2
+              className="
+        mt-4
+        font-serif
+        text-5xl
+        font-medium
+        leading-none
+        tracking-[-0.025em]
+        text-white
+        md:text-6xl
+      "
+            >
+              Our Most Loved Pieces
+            </h2>
+
+            {/* Decorative line */}
+
+            <div className="mt-5 flex items-center justify-center gap-3">
+              <span className="h-px w-12 bg-[#d6b477]/40" />
+
+              <span className="text-[9px] text-[#d6b477]">✦</span>
+
+              <span className="h-px w-12 bg-[#d6b477]/40" />
+            </div>
+
+            {/* Description */}
+
+            <p
+              className="
+        mx-auto
+        mt-5
+        max-w-2xl
+        text-sm
+        font-light
+        leading-6
+        tracking-wide
+        text-white/40
+      "
+            >
+              Discover our most cherished creations, crafted with exceptional
+              materials, timeless design, and meticulous attention to every
+              detail.
+            </p>
+          </div>
+
+          {/* =========================================
+      HORIZONTAL PRODUCT TRACK
+  ========================================= */}
+
+          <div
+            className="
+      relative
+      z-10
+      mt-12
+      w-full
+      overflow-hidden
+    "
+          >
+            <div
+              ref={galleryRef}
+              className="
+        flex
+        w-max
+        gap-6
+        px-[6vw]
+      "
+            >
+              {Array.from({ length: 10 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="
+            group
+            relative
+            flex
+            h-[290px]
+            w-[470px]
+            shrink-0
+            overflow-hidden
+            rounded-2xl
+            border
+            border-white/[0.08]
+            bg-[#181818]
+            transition-all
+            duration-500
+            hover:-translate-y-2
+            hover:border-[#d6b477]/30
+          "
+                >
+                  {/* =================================
+              CARD GLOW
+          ================================= */}
+
+                  <div
+                    className="
+              pointer-events-none
+              absolute
+              -right-20
+              -top-20
+              h-56
+              w-56
+              rounded-full
+              bg-[#d6b477]/10
+              blur-[80px]
+              opacity-0
+              transition-opacity
+              duration-700
+              group-hover:opacity-100
+            "
+                  />
+
+                  {/* =================================
+              IMAGE
+          ================================= */}
+
+                  <div
+                    className="
+              relative
+              flex
+              w-[55%]
+              items-center
+              justify-center
+            "
+                  >
+                    {/* Ring glow */}
+
+                    <div
+                      className="
+                pointer-events-none
+                absolute
+                left-1/2
+                top-1/2
+                h-44
+                w-44
+                -translate-x-1/2
+                -translate-y-1/2
+                rounded-full
+                bg-[#d6b477]/10
+                blur-[60px]
+              "
+                    />
+
+                    <img
+                      src={ringImage}
+                      alt="Premium luxury ring"
+                      className="
+                relative
+                z-10
+                w-[250px]
+                object-contain
+                transition-all
+                duration-700
+                ease-out
+                group-hover:scale-110
+                group-hover:rotate-3
+              "
+                    />
+                  </div>
+
+                  {/* =================================
+              PRODUCT CONTENT
+          ================================= */}
+
+                  <div
+                    className="
+              relative
+              z-10
+              flex
+              w-[45%]
+              flex-col
+              justify-center
+              pr-8
+            "
+                  >
+                    {/* Product number */}
+
+                    <span
+                      className="
+                text-[10px]
+                uppercase
+                tracking-[0.3em]
+                text-[#d6b477]/50
+              "
+                    >
+                      0{(index % 9) + 1}
+                    </span>
+
+                    {/* Product title */}
+
+                    <h3
+                      className="
+                mt-4
+                font-serif
+                text-2xl
+                font-medium
+                leading-tight
+                text-white
+              "
+                    >
+                      Aurelia
+                      <br />
+                      Diamond Ring
+                    </h3>
+
+                    {/* Divider */}
+
+                    <div className="my-4 h-px w-10 bg-[#d6b477]/40" />
+
+                    {/* Description */}
+
+                    <p
+                      className="
+                max-w-[170px]
+                text-xs
+                leading-5
+                text-white/40
+              "
+                    >
+                      Handcrafted elegance with a timeless diamond setting.
+                    </p>
+
+                    {/* Price */}
+
+                    <p
+                      className="
+                mt-4
+                text-sm
+                font-medium
+                tracking-wide
+                text-[#d6b477]
+              "
+                    >
+                      $1,250
+                    </p>
+
+                    {/* Button */}
+
+                    <button
+                      className="
+                mt-4
+                flex
+                w-fit
+                items-center
+                gap-3
+                rounded-full
+                border
+                border-white/15
+                px-5
+                py-2
+                text-xs
+                font-medium
+                text-white
+                transition-all
+                duration-300
+                hover:border-[#d6b477]
+                hover:bg-[#d6b477]
+                hover:text-black
+              "
+                    >
+                      <span>Explore</span>
+
+                      <span>→</span>
+                    </button>
+                  </div>
+
+                  {/* =================================
+              CORNER DETAILS
+          ================================= */}
+
+                  <div
+                    className="
+              pointer-events-none
+              absolute
+              bottom-4
+              left-4
+              h-7
+              w-7
+              border-b
+              border-l
+              border-[#d6b477]/30
+            "
+                  />
+
+                  <div
+                    className="
+              pointer-events-none
+              absolute
+              right-4
+              top-4
+              h-7
+              w-7
+              border-r
+              border-t
+              border-[#d6b477]/30
+            "
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* =========================================
+      BOTTOM SCROLL INDICATOR
+  ========================================= */}
+
+          <div
+            className="
+      relative
+      z-10
+      mt-10
+      flex
+      items-center
+      justify-center
+      gap-4
+    "
+          >
+            <span className="h-px w-12 bg-white/10" />
+
+            <span
+              className="
+        text-[10px]
+        uppercase
+        tracking-[0.35em]
+        text-white/25
+      "
+            >
+              Scroll to explore
+            </span>
+
+            <span className="text-sm text-[#d6b477]">→</span>
+
+            <span className="h-px w-12 bg-white/10" />
+          </div>
+        </div>
+
+       {/* =========================================
+    FINAL CTA / NEWSLETTER SECTION
+========================================= */}
+
+<section className="relative z-20 overflow-hidden bg-[#111111] px-6 py-24">
+
+  {/* Background glow */}
+  <div
+    className="
+      pointer-events-none
+      absolute
+      left-1/2
+      top-1/2
+      h-[500px]
+      w-[500px]
+      -translate-x-1/2
+      -translate-y-1/2
+      rounded-full
+      bg-[#d6b477]/[0.035]
+      blur-[130px]
+    "
+  />
+
+  <div className="container relative mx-auto">
+
+    <div
+      className="
+        relative
+        flex
+        min-h-[420px]
+        overflow-hidden
+        rounded-[28px]
+        border
+        border-white/[0.07]
+        bg-[#151515]
+      "
+    >
+
+      {/* =====================================
+          LEFT — IMAGE
+      ===================================== */}
+
+      <div className="relative w-1/2 overflow-hidden">
+
+        <img
+          src={contactUsSectionImage}
+          alt="Luxury diamond ring"
+          className="
+            h-full
+            min-h-[420px]
+            w-full
+            object-cover
+            transition-transform
+            duration-1000
+            hover:scale-105
+          "
+        />
+
+        {/* Image gradient */}
+        <div
+          className="
+            absolute
+            inset-0
+            bg-gradient-to-r
+            from-transparent
+            via-transparent
+            to-[#151515]
+          "
+        />
+
+        {/* Bottom gradient */}
+        <div
+          className="
+            absolute
+            inset-x-0
+            bottom-0
+            h-32
+            bg-gradient-to-t
+            from-black/50
+            to-transparent
+          "
+        />
+
+        {/* Gold corner */}
+        <div
+          className="
+            absolute
+            left-6
+            top-6
+            h-10
+            w-10
+            border-l
+            border-t
+            border-[#d6b477]/50
+          "
+        />
+
+        <div
+          className="
+            absolute
+            bottom-6
+            right-6
+            h-10
+            w-10
+            border-b
+            border-r
+            border-[#d6b477]/50
+          "
+        />
+
+      </div>
+
+
+      {/* =====================================
+          RIGHT — CONTENT
+      ===================================== */}
+
+      <div
+        className="
+          relative
+          flex
+          w-1/2
+          flex-col
+          justify-center
+          px-14
+          lg:px-20
+        "
+      >
+
+        {/* Label */}
+        <div className="mb-6 flex items-center gap-3">
+
+          <span className="h-px w-8 bg-[#d6b477]" />
+
+          <span
+            className="
+              text-[10px]
+              font-medium
+              uppercase
+              tracking-[0.35em]
+              text-[#d6b477]
+            "
+          >
+            Stay Updated
           </span>
 
-        </button>
+        </div>
+
+
+        {/* Heading */}
+        <h2
+          className="
+            max-w-xl
+            text-4xl
+            font-light
+            leading-[1.05]
+            tracking-[-0.035em]
+            text-white
+            md:text-5xl
+          "
+        >
+          Be The First
+          <br />
+          <span className="font-serif italic text-[#d6b477]">
+            To Know
+          </span>
+        </h2>
+
+
+        {/* Description */}
+        <p
+          className="
+            mt-6
+            max-w-md
+            text-[14px]
+            font-light
+            leading-7
+            tracking-wide
+            text-white/50
+          "
+        >
+          Discover new collections, exclusive pieces, and private offers
+          before anyone else. Join our world of timeless elegance.
+        </p>
+
+
+        {/* Newsletter */}
+        <div className="mt-8 flex max-w-md items-center gap-2">
+
+          <input
+            type="email"
+            placeholder="Your email address"
+            className="
+              h-12
+              flex-1
+              rounded-full
+              border
+              border-white/10
+              bg-white/[0.03]
+              px-5
+              text-sm
+              text-white
+              outline-none
+              placeholder:text-white/30
+              transition
+              focus:border-[#d6b477]/50
+            "
+          />
+
+          <button
+            className="
+              group
+              flex
+              h-12
+              items-center
+              gap-3
+              rounded-full
+              bg-white
+              px-6
+              text-sm
+              font-medium
+              text-black
+              transition-all
+              duration-300
+              hover:bg-[#d6b477]
+              hover:shadow-[0_0_30px_rgba(214,180,119,0.15)]
+            "
+          >
+            Subscribe
+
+            <span
+              className="
+                text-base
+                transition-transform
+                duration-300
+                group-hover:translate-x-1
+              "
+            >
+              →
+            </span>
+          </button>
+
+        </div>
+
+
+        {/* Small privacy text */}
+        <p className="mt-4 text-[10px] tracking-wide text-white/25">
+          No spam. Only timeless pieces and exclusive updates.
+        </p>
 
       </div>
 
@@ -1255,73 +1880,391 @@ function App() {
 
 </section>
 
-        <div className="relative w-full overflow-hidden">
-          {/* TITLE */}
-          <div className="text-center text-white pt-10 pb-6">
-            <p className="text-sm tracking-widest text-gray-400">BEST SELLER</p>
+{/* =========================================
+    FOOTER
+========================================= */}
 
-            <p className="text-3xl font-semibold mt-2">Our Most Loved Pieces</p>
-          </div>
+<footer className="relative overflow-hidden bg-[#0b0b0b]">
 
-          {/* HORIZONTAL SCROLL */}
-          <div ref={galleryRef} className="flex w-max gap-3 px-24">
-            {Array.from({ length: 10 }).map((_, index) => (
-              <div
-                key={index}
-                className="group relative w-64 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-white/5 p-2 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-[#5C698A]"
-              >
-                {/* Glow */}
-                <div className="absolute -top-20 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-[#5C698A]/40 blur-3xl opacity-0 transition duration-500 group-hover:opacity-100" />
+  {/* Top border */}
+  <div className="h-px w-full bg-white/[0.06]" />
 
-                {/* Image */}
-                <div className="relative flex justify-center">
-                  <img
-                    src={ringImage}
-                    alt="ring image"
-                    className="h-44 transition duration-500 group-hover:scale-110 group-hover:rotate-6"
-                  />
-                </div>
+  <div className="container mx-auto px-6">
 
-                {/* Content */}
-                <div className="mt-8 text-center">
-                  <h3 className="text-2xl font-semibold text-white">
-                    Premium Ring
-                  </h3>
+    {/* =====================================
+        MAIN FOOTER
+    ===================================== */}
 
-                  <p className="mt-2 text-sm leading-7 text-gray-400">$1,250</p>
+    <div className="grid grid-cols-1 gap-12 py-20 md:grid-cols-2 lg:grid-cols-4">
 
-                  <button className="mt-3 rounded-full border border-[#5C698A] px-6 py-1 text-white transition hover:bg-[#5C698A]">
-                    Explore
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* =================================
+          BRAND
+      ================================= */}
+
+      <div className="lg:col-span-1">
+
+        <h2
+          className="
+            text-3xl
+            font-semibold
+            tracking-[0.18em]
+            text-white
+          "
+        >
+          AURELIA
+        </h2>
+
+        <p
+          className="
+            mt-6
+            max-w-xs
+            text-sm
+            font-light
+            leading-7
+            text-white/40
+          "
+        >
+          Timeless jewelry crafted with precision, passion, and an
+          unwavering dedication to beauty.
+        </p>
+
+        {/* Social */}
+        <div className="mt-7 flex items-center gap-3">
+
+          <a
+            href="#"
+            className="
+              flex
+              h-9
+              w-9
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-white/10
+              text-xs
+              text-white/50
+              transition
+              hover:border-[#d6b477]/50
+              hover:text-[#d6b477]
+            "
+          >
+            IG
+          </a>
+
+          <a
+            href="#"
+            className="
+              flex
+              h-9
+              w-9
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-white/10
+              text-xs
+              text-white/50
+              transition
+              hover:border-[#d6b477]/50
+              hover:text-[#d6b477]
+            "
+          >
+            FB
+          </a>
+
+          <a
+            href="#"
+            className="
+              flex
+              h-9
+              w-9
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-white/10
+              text-xs
+              text-white/50
+              transition
+              hover:border-[#d6b477]/50
+              hover:text-[#d6b477]
+            "
+          >
+            PI
+          </a>
+
         </div>
 
-        <div className="container mx-auto">
-          <div className="flex gap-5 items-center bg-[#2020203a] rounded-2xl overflow-clip">
-            <div className="w-full max-w-200">
-              <img
-                src={contactUsSectionImage}
-                alt="image of ring in stone"
-                className="w-full h-full object-fill"
-              />
-            </div>
-            <div className="space-y-1.5">
-              <p className="text-amber-500">STAY UPDATED</p>
-              <p className="text-4xl  text-white">Be The First To Know</p>
-              <p className=" text-white">
-                Subscribe to get special offer, free giveaway, <br /> and
-                once-in-o-WeTime Offer
-              </p>
-              <button className="mt-3 rounded-full border border-[#5C698A] px-6 py-1 text-white transition hover:bg-[#5C698A]">
-                Subscribe
-              </button>
-            </div>
-          </div>
+      </div>
+
+
+      {/* =================================
+          EXPLORE
+      ================================= */}
+
+      <div>
+
+        <p
+          className="
+            mb-6
+            text-[10px]
+            font-medium
+            uppercase
+            tracking-[0.3em]
+            text-[#d6b477]
+          "
+        >
+          Explore
+        </p>
+
+        <div className="flex flex-col gap-4">
+
+          <a
+            href="#"
+            className="text-sm text-white/45 transition hover:text-white"
+          >
+            Home
+          </a>
+
+          <a
+            href="#"
+            className="text-sm text-white/45 transition hover:text-white"
+          >
+            About Us
+          </a>
+
+          <a
+            href="#"
+            className="text-sm text-white/45 transition hover:text-white"
+          >
+            Collection
+          </a>
+
+          <a
+            href="#"
+            className="text-sm text-white/45 transition hover:text-white"
+          >
+            Craftsmanship
+          </a>
+
+          <a
+            href="#"
+            className="text-sm text-white/45 transition hover:text-white"
+          >
+            Contact
+          </a>
+
         </div>
+
+      </div>
+
+
+      {/* =================================
+          CUSTOMER CARE
+      ================================= */}
+
+      <div>
+
+        <p
+          className="
+            mb-6
+            text-[10px]
+            font-medium
+            uppercase
+            tracking-[0.3em]
+            text-[#d6b477]
+          "
+        >
+          Customer Care
+        </p>
+
+        <div className="flex flex-col gap-4">
+
+          <a
+            href="#"
+            className="text-sm text-white/45 transition hover:text-white"
+          >
+            Shipping & Delivery
+          </a>
+
+          <a
+            href="#"
+            className="text-sm text-white/45 transition hover:text-white"
+          >
+            Returns & Exchanges
+          </a>
+
+          <a
+            href="#"
+            className="text-sm text-white/45 transition hover:text-white"
+          >
+            Size Guide
+          </a>
+
+          <a
+            href="#"
+            className="text-sm text-white/45 transition hover:text-white"
+          >
+            FAQs
+          </a>
+
+          <a
+            href="#"
+            className="text-sm text-white/45 transition hover:text-white"
+          >
+            Privacy Policy
+          </a>
+
+        </div>
+
+      </div>
+
+
+      {/* =================================
+          CONTACT
+      ================================= */}
+
+      <div>
+
+        <p
+          className="
+            mb-6
+            text-[10px]
+            font-medium
+            uppercase
+            tracking-[0.3em]
+            text-[#d6b477]
+          "
+        >
+          Get In Touch
+        </p>
+
+        <div className="flex flex-col gap-5">
+
+          <div>
+            <p className="text-[10px] uppercase tracking-widest text-white/25">
+              Email
+            </p>
+
+            <p className="mt-1 text-sm text-white/55">
+              hello@aurelia.com
+            </p>
+          </div>
+
+          <div>
+            <p className="text-[10px] uppercase tracking-widest text-white/25">
+              Phone
+            </p>
+
+            <p className="mt-1 text-sm text-white/55">
+              +1 234 567 890
+            </p>
+          </div>
+
+          <div>
+            <p className="text-[10px] uppercase tracking-widest text-white/25">
+              Atelier
+            </p>
+
+            <p className="mt-1 text-sm leading-6 text-white/55">
+              24 Madison Avenue
+              <br />
+              New York, NY
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    {/* =====================================
+        GOLD DIVIDER
+    ===================================== */}
+
+    <div className="relative">
+
+      <div className="h-px w-full bg-white/[0.06]" />
+
+      <div
+        className="
+          absolute
+          left-1/2
+          top-1/2
+          h-1
+          w-1
+          -translate-x-1/2
+          -translate-y-1/2
+          rotate-45
+          bg-[#d6b477]
+        "
+      />
+
+    </div>
+
+
+    {/* =====================================
+        BOTTOM FOOTER
+    ===================================== */}
+
+    <div
+      className="
+        flex
+        flex-col
+        items-center
+        justify-between
+        gap-4
+        py-7
+        md:flex-row
+      "
+    >
+
+      <p className="text-[10px] uppercase tracking-[0.2em] text-white/25">
+        © 2026 Aurelia Jewelry. All rights reserved.
+      </p>
+
+      <div className="flex items-center gap-6">
+
+        <a
+          href="#"
+          className="
+            text-[10px]
+            uppercase
+            tracking-[0.2em]
+            text-white/25
+            transition
+            hover:text-white
+          "
+        >
+          Terms
+        </a>
+
+        <a
+          href="#"
+          className="
+            text-[10px]
+            uppercase
+            tracking-[0.2em]
+            text-white/25
+            transition
+            hover:text-white
+          "
+        >
+          Privacy
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
       </section>
+      
     </div>
   );
 }
