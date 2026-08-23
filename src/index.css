@@ -3,3 +3,7 @@
 body{
   background: #020307;
 }
+
+@theme{
+ --color-blue-100: #a2b6cf; 
+}

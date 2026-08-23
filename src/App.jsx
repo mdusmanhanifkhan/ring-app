@@ -120,10 +120,7 @@ function App() {
   return (
     <div className="flex flex-col gap-30 overflow-clip relative h-auto">
       <div className="bg-[#5C698A] blur-[200px] w-142 h-142 absolute top-237.5 rounded-full z-0 -right-80"></div>
-      {/* <div className="bg-[#5C698A] blur-[200px] w-100 h-100 absolute top-362.5 rounded-full z-0 -right-80"></div> */}
       <div className="bg-[#5C698A] blur-[200px] w-100 h-100 absolute top-362.5 rounded-full z-0 -left-80"></div>
-      {/* <div className="bg-[#5C698A] blur-[200px] w-120 h-120 absolute top-500.5 rounded-full z-0 -right-80"></div> */}
-      {/* <div className="bg-[#5C698A] blur-[200px] w-100 h-100 absolute top-462.5 rounded-full z-0  left-1/2 -translate-x-1/2"></div> */}
       <HeroSection />
       {/* Second Section */}
       <div className="container mx-auto flex items-center gap-20 relative z-20">
@@ -186,10 +183,6 @@ function App() {
         </div>
       </div>
       {/* Third Section */}
-      {/* =========================================
-    THIRD SECTION
-========================================= */}
-
       <section className="relative min-h-screen w-full overflow-hidden">
         {/* subtle background atmosphere */}
         <div
@@ -1622,15 +1615,14 @@ function App() {
           </div>
         </div>
 
-       {/* =========================================
+        {/* =========================================
     FINAL CTA / NEWSLETTER SECTION
 ========================================= */}
 
-<section className="relative z-20 overflow-hidden bg-[#111111] px-6 py-24">
-
-  {/* Background glow */}
-  <div
-    className="
+        <section className="relative z-20 overflow-hidden bg-[#111111] px-6 py-24">
+          {/* Background glow */}
+          <div
+            className="
       pointer-events-none
       absolute
       left-1/2
@@ -1643,12 +1635,11 @@ function App() {
       bg-[#d6b477]/[0.035]
       blur-[130px]
     "
-  />
+          />
 
-  <div className="container relative mx-auto">
-
-    <div
-      className="
+          <div className="container relative mx-auto">
+            <div
+              className="
         relative
         flex
         min-h-[420px]
@@ -1658,18 +1649,16 @@ function App() {
         border-white/[0.07]
         bg-[#151515]
       "
-    >
-
-      {/* =====================================
+            >
+              {/* =====================================
           LEFT — IMAGE
       ===================================== */}
 
-      <div className="relative w-1/2 overflow-hidden">
-
-        <img
-          src={contactUsSectionImage}
-          alt="Luxury diamond ring"
-          className="
+              <div className="relative w-1/2 overflow-hidden">
+                <img
+                  src={contactUsSectionImage}
+                  alt="Luxury diamond ring"
+                  className="
             h-full
             min-h-[420px]
             w-full
@@ -1678,11 +1667,11 @@ function App() {
             duration-1000
             hover:scale-105
           "
-        />
+                />
 
-        {/* Image gradient */}
-        <div
-          className="
+                {/* Image gradient */}
+                <div
+                  className="
             absolute
             inset-0
             bg-gradient-to-r
@@ -1690,11 +1679,11 @@ function App() {
             via-transparent
             to-[#151515]
           "
-        />
+                />
 
-        {/* Bottom gradient */}
-        <div
-          className="
+                {/* Bottom gradient */}
+                <div
+                  className="
             absolute
             inset-x-0
             bottom-0
@@ -1703,11 +1692,11 @@ function App() {
             from-black/50
             to-transparent
           "
-        />
+                />
 
-        {/* Gold corner */}
-        <div
-          className="
+                {/* Gold corner */}
+                <div
+                  className="
             absolute
             left-6
             top-6
@@ -1717,10 +1706,10 @@ function App() {
             border-t
             border-[#d6b477]/50
           "
-        />
+                />
 
-        <div
-          className="
+                <div
+                  className="
             absolute
             bottom-6
             right-6
@@ -1730,17 +1719,15 @@ function App() {
             border-r
             border-[#d6b477]/50
           "
-        />
+                />
+              </div>
 
-      </div>
-
-
-      {/* =====================================
+              {/* =====================================
           RIGHT — CONTENT
       ===================================== */}
 
-      <div
-        className="
+              <div
+                className="
           relative
           flex
           w-1/2
@@ -1749,31 +1736,27 @@ function App() {
           px-14
           lg:px-20
         "
-      >
+              >
+                {/* Label */}
+                <div className="mb-6 flex items-center gap-3">
+                  <span className="h-px w-8 bg-[#d6b477]" />
 
-        {/* Label */}
-        <div className="mb-6 flex items-center gap-3">
-
-          <span className="h-px w-8 bg-[#d6b477]" />
-
-          <span
-            className="
+                  <span
+                    className="
               text-[10px]
               font-medium
               uppercase
               tracking-[0.35em]
               text-[#d6b477]
             "
-          >
-            Stay Updated
-          </span>
+                  >
+                    Stay Updated
+                  </span>
+                </div>
 
-        </div>
-
-
-        {/* Heading */}
-        <h2
-          className="
+                {/* Heading */}
+                <h2
+                  className="
             max-w-xl
             text-4xl
             font-light
@@ -1782,18 +1765,17 @@ function App() {
             text-white
             md:text-5xl
           "
-        >
-          Be The First
-          <br />
-          <span className="font-serif italic text-[#d6b477]">
-            To Know
-          </span>
-        </h2>
+                >
+                  Be The First
+                  <br />
+                  <span className="font-serif italic text-[#d6b477]">
+                    To Know
+                  </span>
+                </h2>
 
-
-        {/* Description */}
-        <p
-          className="
+                {/* Description */}
+                <p
+                  className="
             mt-6
             max-w-md
             text-[14px]
@@ -1802,19 +1784,17 @@ function App() {
             tracking-wide
             text-white/50
           "
-        >
-          Discover new collections, exclusive pieces, and private offers
-          before anyone else. Join our world of timeless elegance.
-        </p>
+                >
+                  Discover new collections, exclusive pieces, and private offers
+                  before anyone else. Join our world of timeless elegance.
+                </p>
 
-
-        {/* Newsletter */}
-        <div className="mt-8 flex max-w-md items-center gap-2">
-
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="
+                {/* Newsletter */}
+                <div className="mt-8 flex max-w-md items-center gap-2">
+                  <input
+                    type="email"
+                    placeholder="Your email address"
+                    className="
               h-12
               flex-1
               rounded-full
@@ -1829,10 +1809,10 @@ function App() {
               transition
               focus:border-[#d6b477]/50
             "
-          />
+                  />
 
-          <button
-            className="
+                  <button
+                    className="
               group
               flex
               h-12
@@ -1849,73 +1829,62 @@ function App() {
               hover:bg-[#d6b477]
               hover:shadow-[0_0_30px_rgba(214,180,119,0.15)]
             "
-          >
-            Subscribe
-
-            <span
-              className="
+                  >
+                    Subscribe
+                    <span
+                      className="
                 text-base
                 transition-transform
                 duration-300
                 group-hover:translate-x-1
               "
-            >
-              →
-            </span>
-          </button>
+                    >
+                      →
+                    </span>
+                  </button>
+                </div>
 
-        </div>
+                {/* Small privacy text */}
+                <p className="mt-4 text-[10px] tracking-wide text-white/25">
+                  No spam. Only timeless pieces and exclusive updates.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-
-        {/* Small privacy text */}
-        <p className="mt-4 text-[10px] tracking-wide text-white/25">
-          No spam. Only timeless pieces and exclusive updates.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-{/* =========================================
+        {/* =========================================
     FOOTER
 ========================================= */}
 
-<footer className="relative overflow-hidden bg-[#0b0b0b]">
+        <footer className="relative overflow-hidden bg-[#0b0b0b]">
+          {/* Top border */}
+          <div className="h-px w-full bg-white/[0.06]" />
 
-  {/* Top border */}
-  <div className="h-px w-full bg-white/[0.06]" />
-
-  <div className="container mx-auto px-6">
-
-    {/* =====================================
+          <div className="container mx-auto px-6">
+            {/* =====================================
         MAIN FOOTER
     ===================================== */}
 
-    <div className="grid grid-cols-1 gap-12 py-20 md:grid-cols-2 lg:grid-cols-4">
-
-      {/* =================================
+            <div className="grid grid-cols-1 gap-12 py-20 md:grid-cols-2 lg:grid-cols-4">
+              {/* =================================
           BRAND
       ================================= */}
 
-      <div className="lg:col-span-1">
-
-        <h2
-          className="
+              <div className="lg:col-span-1">
+                <h2
+                  className="
             text-3xl
             font-semibold
             tracking-[0.18em]
             text-white
           "
-        >
-          AURELIA
-        </h2>
+                >
+                  AURELIA
+                </h2>
 
-        <p
-          className="
+                <p
+                  className="
             mt-6
             max-w-xs
             text-sm
@@ -1923,17 +1892,16 @@ function App() {
             leading-7
             text-white/40
           "
-        >
-          Timeless jewelry crafted with precision, passion, and an
-          unwavering dedication to beauty.
-        </p>
+                >
+                  Timeless jewelry crafted with precision, passion, and an
+                  unwavering dedication to beauty.
+                </p>
 
-        {/* Social */}
-        <div className="mt-7 flex items-center gap-3">
-
-          <a
-            href="#"
-            className="
+                {/* Social */}
+                <div className="mt-7 flex items-center gap-3">
+                  <a
+                    href="#"
+                    className="
               flex
               h-9
               w-9
@@ -1948,13 +1916,13 @@ function App() {
               hover:border-[#d6b477]/50
               hover:text-[#d6b477]
             "
-          >
-            IG
-          </a>
+                  >
+                    IG
+                  </a>
 
-          <a
-            href="#"
-            className="
+                  <a
+                    href="#"
+                    className="
               flex
               h-9
               w-9
@@ -1969,13 +1937,13 @@ function App() {
               hover:border-[#d6b477]/50
               hover:text-[#d6b477]
             "
-          >
-            FB
-          </a>
+                  >
+                    FB
+                  </a>
 
-          <a
-            href="#"
-            className="
+                  <a
+                    href="#"
+                    className="
               flex
               h-9
               w-9
@@ -1990,23 +1958,19 @@ function App() {
               hover:border-[#d6b477]/50
               hover:text-[#d6b477]
             "
-          >
-            PI
-          </a>
+                  >
+                    PI
+                  </a>
+                </div>
+              </div>
 
-        </div>
-
-      </div>
-
-
-      {/* =================================
+              {/* =================================
           EXPLORE
       ================================= */}
 
-      <div>
-
-        <p
-          className="
+              <div>
+                <p
+                  className="
             mb-6
             text-[10px]
             font-medium
@@ -2014,60 +1978,55 @@ function App() {
             tracking-[0.3em]
             text-[#d6b477]
           "
-        >
-          Explore
-        </p>
+                >
+                  Explore
+                </p>
 
-        <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4">
+                  <a
+                    href="#"
+                    className="text-sm text-white/45 transition hover:text-white"
+                  >
+                    Home
+                  </a>
 
-          <a
-            href="#"
-            className="text-sm text-white/45 transition hover:text-white"
-          >
-            Home
-          </a>
+                  <a
+                    href="#"
+                    className="text-sm text-white/45 transition hover:text-white"
+                  >
+                    About Us
+                  </a>
 
-          <a
-            href="#"
-            className="text-sm text-white/45 transition hover:text-white"
-          >
-            About Us
-          </a>
+                  <a
+                    href="#"
+                    className="text-sm text-white/45 transition hover:text-white"
+                  >
+                    Collection
+                  </a>
 
-          <a
-            href="#"
-            className="text-sm text-white/45 transition hover:text-white"
-          >
-            Collection
-          </a>
+                  <a
+                    href="#"
+                    className="text-sm text-white/45 transition hover:text-white"
+                  >
+                    Craftsmanship
+                  </a>
 
-          <a
-            href="#"
-            className="text-sm text-white/45 transition hover:text-white"
-          >
-            Craftsmanship
-          </a>
+                  <a
+                    href="#"
+                    className="text-sm text-white/45 transition hover:text-white"
+                  >
+                    Contact
+                  </a>
+                </div>
+              </div>
 
-          <a
-            href="#"
-            className="text-sm text-white/45 transition hover:text-white"
-          >
-            Contact
-          </a>
-
-        </div>
-
-      </div>
-
-
-      {/* =================================
+              {/* =================================
           CUSTOMER CARE
       ================================= */}
 
-      <div>
-
-        <p
-          className="
+              <div>
+                <p
+                  className="
             mb-6
             text-[10px]
             font-medium
@@ -2075,60 +2034,55 @@ function App() {
             tracking-[0.3em]
             text-[#d6b477]
           "
-        >
-          Customer Care
-        </p>
+                >
+                  Customer Care
+                </p>
 
-        <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4">
+                  <a
+                    href="#"
+                    className="text-sm text-white/45 transition hover:text-white"
+                  >
+                    Shipping & Delivery
+                  </a>
 
-          <a
-            href="#"
-            className="text-sm text-white/45 transition hover:text-white"
-          >
-            Shipping & Delivery
-          </a>
+                  <a
+                    href="#"
+                    className="text-sm text-white/45 transition hover:text-white"
+                  >
+                    Returns & Exchanges
+                  </a>
 
-          <a
-            href="#"
-            className="text-sm text-white/45 transition hover:text-white"
-          >
-            Returns & Exchanges
-          </a>
+                  <a
+                    href="#"
+                    className="text-sm text-white/45 transition hover:text-white"
+                  >
+                    Size Guide
+                  </a>
 
-          <a
-            href="#"
-            className="text-sm text-white/45 transition hover:text-white"
-          >
-            Size Guide
-          </a>
+                  <a
+                    href="#"
+                    className="text-sm text-white/45 transition hover:text-white"
+                  >
+                    FAQs
+                  </a>
 
-          <a
-            href="#"
-            className="text-sm text-white/45 transition hover:text-white"
-          >
-            FAQs
-          </a>
+                  <a
+                    href="#"
+                    className="text-sm text-white/45 transition hover:text-white"
+                  >
+                    Privacy Policy
+                  </a>
+                </div>
+              </div>
 
-          <a
-            href="#"
-            className="text-sm text-white/45 transition hover:text-white"
-          >
-            Privacy Policy
-          </a>
-
-        </div>
-
-      </div>
-
-
-      {/* =================================
+              {/* =================================
           CONTACT
       ================================= */}
 
-      <div>
-
-        <p
-          className="
+              <div>
+                <p
+                  className="
             mb-6
             text-[10px]
             font-medium
@@ -2136,61 +2090,53 @@ function App() {
             tracking-[0.3em]
             text-[#d6b477]
           "
-        >
-          Get In Touch
-        </p>
+                >
+                  Get In Touch
+                </p>
 
-        <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-5">
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-white/25">
+                      Email
+                    </p>
 
-          <div>
-            <p className="text-[10px] uppercase tracking-widest text-white/25">
-              Email
-            </p>
+                    <p className="mt-1 text-sm text-white/55">
+                      hello@aurelia.com
+                    </p>
+                  </div>
 
-            <p className="mt-1 text-sm text-white/55">
-              hello@aurelia.com
-            </p>
-          </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-white/25">
+                      Phone
+                    </p>
 
-          <div>
-            <p className="text-[10px] uppercase tracking-widest text-white/25">
-              Phone
-            </p>
+                    <p className="mt-1 text-sm text-white/55">+1 234 567 890</p>
+                  </div>
 
-            <p className="mt-1 text-sm text-white/55">
-              +1 234 567 890
-            </p>
-          </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-white/25">
+                      Atelier
+                    </p>
 
-          <div>
-            <p className="text-[10px] uppercase tracking-widest text-white/25">
-              Atelier
-            </p>
+                    <p className="mt-1 text-sm leading-6 text-white/55">
+                      24 Madison Avenue
+                      <br />
+                      New York, NY
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <p className="mt-1 text-sm leading-6 text-white/55">
-              24 Madison Avenue
-              <br />
-              New York, NY
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    {/* =====================================
+            {/* =====================================
         GOLD DIVIDER
     ===================================== */}
 
-    <div className="relative">
+            <div className="relative">
+              <div className="h-px w-full bg-white/[0.06]" />
 
-      <div className="h-px w-full bg-white/[0.06]" />
-
-      <div
-        className="
+              <div
+                className="
           absolute
           left-1/2
           top-1/2
@@ -2201,17 +2147,15 @@ function App() {
           rotate-45
           bg-[#d6b477]
         "
-      />
+              />
+            </div>
 
-    </div>
-
-
-    {/* =====================================
+            {/* =====================================
         BOTTOM FOOTER
     ===================================== */}
 
-    <div
-      className="
+            <div
+              className="
         flex
         flex-col
         items-center
@@ -2220,17 +2164,15 @@ function App() {
         py-7
         md:flex-row
       "
-    >
+            >
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/25">
+                © 2026 Aurelia Jewelry. All rights reserved.
+              </p>
 
-      <p className="text-[10px] uppercase tracking-[0.2em] text-white/25">
-        © 2026 Aurelia Jewelry. All rights reserved.
-      </p>
-
-      <div className="flex items-center gap-6">
-
-        <a
-          href="#"
-          className="
+              <div className="flex items-center gap-6">
+                <a
+                  href="#"
+                  className="
             text-[10px]
             uppercase
             tracking-[0.2em]
@@ -2238,13 +2180,13 @@ function App() {
             transition
             hover:text-white
           "
-        >
-          Terms
-        </a>
+                >
+                  Terms
+                </a>
 
-        <a
-          href="#"
-          className="
+                <a
+                  href="#"
+                  className="
             text-[10px]
             uppercase
             tracking-[0.2em]
@@ -2252,19 +2194,14 @@ function App() {
             transition
             hover:text-white
           "
-        >
-          Privacy
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</footer>
+                >
+                  Privacy
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
       </section>
-      
     </div>
   );
 }

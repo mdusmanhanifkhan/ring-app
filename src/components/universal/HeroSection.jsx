@@ -1,4 +1,4 @@
-import RingModel from "../model/RingModel";
+import RingModel from "../../3d-model/RingModel";
 import Header from "./Header";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
