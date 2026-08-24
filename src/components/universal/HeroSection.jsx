@@ -1,18 +1,23 @@
-import RingModel from "../../3d-model/RingModel";
-import Header from "./Header";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
 import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import Header from "./Header";
+import RingModel from "../../3d-model/RingModel";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = () => {
-  const sectionRef = useRef();
+  const sectionRef = useRef(null);
+  const ringRef = useRef(null);
 
-  const ringRef = useRef();
-  const modelRef = useRef();
-  gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
+        defaults: {
+          ease: "none",
+        },
+
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
@@ -21,101 +26,121 @@ const HeroSection = () => {
         },
       });
 
-      // 1. Move to the right
       tl.to(ringRef.current, {
         x: 400,
         y: 600,
-        ease: "none",
       });
 
-      // 2. Slightly down while staying on the right
-      // tl.to(ringRef.current, {
-      //   x: 350,
-      //   y: 1100,
-      //   ease: "none",
-      // });
-
-      // 3. Come diagonally back to the center
       tl.to(ringRef.current, {
         x: -30,
         y: 1300,
-        ease: "none",
       });
 
-      // 4. Reach the center
       tl.to(ringRef.current, {
         x: 0,
         y: 1950,
-        ease: "none",
       });
 
-      // 5. Move straight down
       tl.to(ringRef.current, {
         x: 0,
         y: 2600,
-        ease: "none",
       });
-    });
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div className="w-full h-full">
+    <div className="h-full w-full">
       <Header />
-      <div className="relative w-full h-screen" ref={sectionRef}>
-        {/* <span className="w-full h-20 bg-[#0F1014] blur-sm absolute -bottom-10"></span> */}
-        <div
-          className="absolute -top-12 left-1/2 -translate-x-1/2 w-full h-125
-  bg-[radial-gradient(circle,rgba(33,82,141,0.6)_0%,rgba(33,82,141,0.3)_20%,rgba(0,0,0,0)_120%)]
-  blur-2xl"
-        ></div>
 
-        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2">
-          <div className="w-232.75 h-130">
+      <div ref={sectionRef} className="relative h-[80vh] md:h-screen w-full">
+        {/* Background Glow */}
+        <div
+          className="
+            absolute
+            -top-12
+            left-1/2
+            h-125
+            w-full
+            -translate-x-1/2
+            bg-[radial-gradient(circle,rgba(33,82,141,0.6)_0%,rgba(33,82,141,0.3)_20%,rgba(0,0,0,0)_120%)]
+            blur-2xl
+          "
+        />
+
+        {/* Background Dots */}
+        <div
+          className="
+            absolute
+            left-1/2
+            top-[-10%]
+            -translate-x-1/2
+          "
+        >
+          <div className="h-130 w-232.75">
             <img
               src="/images/bg-dot.png"
               alt=""
-              className="w-full h-full object-contain"
+              className="h-full w-full object-contain"
             />
           </div>
         </div>
-        <img
-          src="/images/white-rainbow.png"
-          className="w-full absolute bottom-0"
-          alt=""
-        />
 
-        <div className="text-white flex flex-col justify-center items-center pt-56 relative z-10">
-          <span className="text-[10px] font-medium uppercase tracking-[0.35em] text-[#8fa8c4] sm:text-[11px] sm:tracking-[0.4em]">
+        {/* Bottom Rainbow */}
+        <div className="hidden md:block">
+          <img
+          src="/images/white-rainbow.png"
+          alt=""
+          className="absolute md:bottom-0 w-full"
+        />
+        </div>
+
+        {/* Hero Content */}
+        <div
+          className="relative z-10 flex flex-col gap-2 items-center justify-center pt-25 md:pt-30 lg:pt-56 text-white
+          "
+        >
+          <span
+            className="text-[9px] font-medium uppercase tracking-[0.35em] text-muted sm:text-[11px] sm:tracking-[0.4em]">
             Timeless • Refined • Iconic
           </span>
-          <h1 className="max-w-5xl text-[42px] font-semibold leading-[1.05] tracking-[-0.04em] text-[#dce7f5] sm:text-[56px] md:text-[68px] lg:text-[76px] font-serif italic">
+
+          <h1
+            className="max-w-5xl text-center font-serif text-[32px] font-semibold italic leading-[1.05] tracking-[-0.04em] text-primary sm:text-[56px] md:text-[68px] lg:text-[76px]">
             Crafted to Be
-            <span className="text-[#a78554]"> Your Forever</span>
+            <span className="text-accent"> Your Forever</span>
           </h1>
-          <p className="max-w-2xl text-[14px] leading-6 text-[#91a5bc] sm:text-[15px] sm:leading-7 md:text-[16px] text-center">
+
+          <p
+            className="max-w-2xl text-center text-[12px] leading-6 text-secondary sm:text-[15px] sm:leading-7 md:text-[16px]
+            "
+          >
             Discover beautifully crafted engagement and fine jewelry rings
             designed to celebrate the moments that last a lifetime.
           </p>
         </div>
 
-        <div className="relative w-full h-full">
-          {/* <div ref={ringRef} className="absolute w-full h-full z-40 -top-72">
+        {/* 3D Ring */}
+        <div className="relative h-full w-full">
+          <div ref={ringRef} className="absolute -top-48 z-40 h-full w-full scale-[0.9] md:scale-100">
             <RingModel />
-          </div> */}
-          <div ref={ringRef} className="absolute w-full h-full z-40 -top-72">
-            <div ref={modelRef} className="w-full h-full">
-              <RingModel />
-            </div>
           </div>
+
+          {/* Ring Light */}
           <svg
             width="633"
             height="1211"
             viewBox="0 0 633 1211"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute top-[-70%] left-1/2 -translate-x-1/2 z-0"
+            className="
+              absolute
+              left-1/2
+              top-[-70%]
+              z-0
+              -translate-x-1/2
+            "
           >
             <use href="/svg/ring-light.svg#ring-light" />
           </svg>

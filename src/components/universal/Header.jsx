@@ -66,7 +66,7 @@ const Header = () => {
             <a
               key={label}
               href={href}
-              className="group relative whitespace-nowrap text-[14px] text-blue-100 transition-colors duration-300 hover:text-white lg:text-[15px]"
+              className="group relative whitespace-nowrap text-[14px] text-muted transition-colors duration-300 hover:text-white lg:text-[15px]"
             >
               {label}
               <span className="absolute -bottom-1 left-1/2 h-px w-0 -translate-x-1/2 bg-white transition-all duration-300 group-hover:w-full" />
@@ -76,7 +76,7 @@ const Header = () => {
 
         {/* Actions */}
 
-        <div className="flex items-center gap-3 text-blue-100 sm:gap-4">
+        <div className="flex items-center gap-3 text-muted sm:gap-4">
           {ACTION_ITEMS.map(({ label, icon: Icon }) => (
             <button
               key={label}
@@ -95,7 +95,7 @@ const Header = () => {
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((open) => !open)}
-            className=" flex items-center justify-center text-blue-100 transition-colors duration-300 hover:text-white md:hidden "
+            className=" flex items-center justify-center text-muted transition-colors duration-300 hover:text-white md:hidden "
           >
             {isMenuOpen ? (
               <FiX className="h-6 w-6" />
@@ -121,7 +121,7 @@ const Header = () => {
                 key={label}
                 href={href}
                 onClick={closeMenu}
-                className={`group flex items-center justify-between py-4 text-[15px] text-blue-100 transition-colors duration-300 hover:text-white
+                className={`group flex items-center justify-between py-4 text-[15px] text-muted transition-colors duration-300 hover:text-white
                   ${
                     index !== NAV_ITEMS.length - 1
                       ? "border-b border-white/6"
