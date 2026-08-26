@@ -10,6 +10,8 @@ import BestSellers from "./components/sections/BestSellers";
 import CraftedToPerfection from "./components/sections/CraftedToPerfection";
 import Newsletter from "./components/sections/Newsletter";
 import Footer from "./components/universal/Footer";
+import Glow from "./components/universal/Glow";
+import Header from "./components/universal/Header";
 
 function App() {
   const eclipseSectionRef = useRef(null);
@@ -124,9 +126,12 @@ function App() {
 
   return (
     <div className="flex flex-col gap-30 overflow-clip relative h-auto">
-      <div className="bg-[#5C698A] blur-[200px] w-142 h-142 absolute top-237.5 rounded-full z-0 -right-80"></div>
-      <div className="bg-[#5C698A] blur-[200px] w-100 h-100 absolute top-362.5 rounded-full z-0 -left-80"></div>
-      <HeroSection />
+      <Glow style={"-right-80 top-237.5 w-142 h-142"} />
+      <Glow style={"-left-80 top-362.5 w-100 h-100"} />
+      <div className="h-full w-full">
+        <Header />
+        <HeroSection />
+      </div>
       <CollectionIntro />
       <Craftsmanship
         sunCircleRef={sunCircleRef}
