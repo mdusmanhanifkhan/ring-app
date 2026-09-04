@@ -1,6 +1,6 @@
 import ringImage from "/images/ring.png";
 
-const BestSellers = ({gallerySectionRef , galleryRef}) => {
+const BestSellers = ({ gallerySectionRef, galleryRef }) => {
   return (
     <div
       ref={gallerySectionRef}
@@ -129,139 +129,200 @@ const BestSellers = ({gallerySectionRef , galleryRef}) => {
         HORIZONTAL PRODUCT TRACK
     ========================================= */}
 
+      {/* =========================================
+    HORIZONTAL PRODUCT TRACK
+========================================= */}
+
       <div
         className="
-        relative
-        z-10
-        mt-12
-        w-full
-        overflow-hidden
-      "
+    relative
+    z-10
+    mt-8
+    w-full
+    overflow-hidden
+    sm:mt-10
+    md:mt-12
+  "
       >
         <div
           ref={galleryRef}
           className="
-          flex
-          w-max
-          gap-6
-          px-[6vw]
-        "
+      flex
+      w-max
+      gap-4
+      px-4
+      sm:gap-5
+      sm:px-6
+      md:gap-6
+      md:px-[6vw]
+      my-3
+    "
         >
           {Array.from({ length: 10 }).map((_, index) => (
             <div
               key={index}
               className="
-              group
-              relative
-              flex
-              h-[290px]
-              w-[470px]
-              shrink-0
-              overflow-hidden
-              rounded-2xl
-              border
-              border-white/[0.08]
-              bg-[#181818]
-              transition-all
-              duration-500
-              hover:-translate-y-2
-              hover:border-[#d6b477]/30
-            "
+          group
+          relative
+          flex
+          h-[240px]
+          w-[calc(100vw-32px)]
+          max-w-[400px]
+          shrink-0
+          overflow-hidden
+          rounded-xl
+          border
+          border-white/[0.08]
+          bg-[#181818]
+          transition-all
+          duration-500
+
+          sm:h-[260px]
+          sm:w-[430px]
+          sm:rounded-2xl
+
+          md:h-[280px]
+          md:w-[460px]
+
+          lg:h-[290px]
+          lg:w-[470px]
+
+          hover:-translate-y-2
+          hover:border-[#d6b477]/30
+        "
             >
               {/* =================================
-                CARD GLOW
-            ================================= */}
+            CARD GLOW
+        ================================= */}
 
               <div
                 className="
-                pointer-events-none
-                absolute
-                -right-20
-                -top-20
-                h-56
-                w-56
-                rounded-full
-                bg-[#d6b477]/10
-                blur-[80px]
-                opacity-0
-                transition-opacity
-                duration-700
-                group-hover:opacity-100
-              "
+            pointer-events-none
+            absolute
+            -right-16
+            -top-16
+            h-44
+            w-44
+            rounded-full
+            bg-[#d6b477]/10
+            blur-[70px]
+            opacity-0
+            transition-opacity
+            duration-700
+            group-hover:opacity-100
+            sm:-right-20
+            sm:-top-20
+            sm:h-56
+            sm:w-56
+            sm:blur-[80px]
+          "
               />
 
               {/* =================================
-                IMAGE
-            ================================= */}
+            IMAGE AREA
+        ================================= */}
 
               <div
                 className="
-                relative
-                flex
-                w-[55%]
-                items-center
-                justify-center
-              "
+            relative
+            flex
+            h-full
+            w-[48%]
+            shrink-0
+            items-center
+            justify-center
+
+            sm:w-[50%]
+            md:w-[53%]
+            lg:w-[55%]
+          "
               >
                 {/* Ring glow */}
 
                 <div
                   className="
-                  pointer-events-none
-                  absolute
-                  left-1/2
-                  top-1/2
-                  h-44
-                  w-44
-                  -translate-x-1/2
-                  -translate-y-1/2
-                  rounded-full
-                  bg-[#d6b477]/10
-                  blur-[60px]
-                "
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              h-28
+              w-28
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              bg-[#d6b477]/10
+              blur-[45px]
+
+              sm:h-36
+              sm:w-36
+              sm:blur-[50px]
+
+              md:h-40
+              md:w-40
+
+              lg:h-44
+              lg:w-44
+              lg:blur-[60px]
+            "
                 />
 
                 <img
                   src={ringImage}
                   alt="Premium luxury ring"
                   className="
-                  relative
-                  z-10
-                  w-[250px]
-                  object-contain
-                  transition-all
-                  duration-700
-                  ease-out
-                  group-hover:scale-110
-                  group-hover:rotate-3
-                "
+              relative
+              z-10
+              w-[145px]
+              max-w-[90%]
+              object-contain
+              transition-all
+              duration-700
+              ease-out
+
+              sm:w-[175px]
+              md:w-[205px]
+              lg:w-[250px]
+
+              group-hover:scale-110
+              group-hover:rotate-3
+            "
                 />
               </div>
 
               {/* =================================
-                PRODUCT CONTENT
-            ================================= */}
+            PRODUCT CONTENT
+        ================================= */}
 
               <div
                 className="
-                relative
-                z-10
-                flex
-                w-[45%]
-                flex-col
-                justify-center
-                pr-8
-              "
+            relative
+            z-10
+            flex
+            min-w-0
+            flex-1
+            flex-col
+            justify-center
+            pr-4
+
+            sm:pr-5
+            md:pr-6
+            lg:pr-8
+          "
               >
                 {/* Product number */}
 
                 <span
                   className="
-                  text-[10px]
-                  uppercase
-                  tracking-[0.3em]
-                  text-[#d6b477]/50
-                "
+              text-[8px]
+              uppercase
+              tracking-[0.25em]
+              text-[#d6b477]/50
+
+              sm:text-[9px]
+              sm:tracking-[0.3em]
+
+              md:text-[10px]
+            "
                 >
                   0{(index % 9) + 1}
                 </span>
@@ -270,13 +331,18 @@ const BestSellers = ({gallerySectionRef , galleryRef}) => {
 
                 <h3
                   className="
-                  mt-4
-                  font-serif
-                  text-2xl
-                  font-medium
-                  leading-tight
-                  text-white
-                "
+              mt-2
+              font-serif
+              text-[18px]
+              font-medium
+              leading-[1.15]
+              text-white
+
+              sm:mt-3
+              sm:text-xl
+
+              md:text-2xl
+            "
                 >
                   Aurelia
                   <br />
@@ -285,17 +351,37 @@ const BestSellers = ({gallerySectionRef , galleryRef}) => {
 
                 {/* Divider */}
 
-                <div className="my-4 h-px w-10 bg-[#d6b477]/40" />
+                <div
+                  className="
+              my-2
+              h-px
+              w-7
+              bg-[#d6b477]/40
+
+              sm:my-3
+              sm:w-9
+
+              md:my-4
+              md:w-10
+            "
+                />
 
                 {/* Description */}
 
                 <p
                   className="
-                  max-w-[170px]
-                  text-xs
-                  leading-5
-                  text-white/40
-                "
+              max-w-[125px]
+              text-[10px]
+              leading-[1.45]
+              text-white/40
+
+              sm:max-w-[150px]
+              sm:text-[11px]
+              sm:leading-5
+
+              md:max-w-[170px]
+              md:text-xs
+            "
                 >
                   Handcrafted elegance with a timeless diamond setting.
                 </p>
@@ -304,12 +390,18 @@ const BestSellers = ({gallerySectionRef , galleryRef}) => {
 
                 <p
                   className="
-                  mt-4
-                  text-sm
-                  font-medium
-                  tracking-wide
-                  text-[#d6b477]
-                "
+              mt-2
+              text-[11px]
+              font-medium
+              tracking-wide
+              text-[#d6b477]
+
+              sm:mt-3
+              sm:text-xs
+
+              md:mt-4
+              md:text-sm
+            "
                 >
                   $1,250
                 </p>
@@ -318,62 +410,98 @@ const BestSellers = ({gallerySectionRef , galleryRef}) => {
 
                 <button
                   className="
-                  mt-4
-                  flex
-                  w-fit
-                  items-center
-                  gap-3
-                  rounded-full
-                  border
-                  border-white/15
-                  px-5
-                  py-2
-                  text-xs
-                  font-medium
-                  text-white
-                  transition-all
-                  duration-300
-                  hover:border-[#d6b477]
-                  hover:bg-[#d6b477]
-                  hover:text-black
-                "
+              mt-2
+              flex
+              w-fit
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-white/15
+              px-3
+              py-1.5
+              text-[9px]
+              font-medium
+              text-white
+              transition-all
+              duration-300
+
+              sm:mt-3
+              sm:gap-2.5
+              sm:px-4
+              sm:py-2
+              sm:text-[10px]
+
+              md:mt-4
+              md:gap-3
+              md:px-5
+              md:text-xs
+
+              hover:border-[#d6b477]
+              hover:bg-[#d6b477]
+              hover:text-black
+            "
                 >
                   <span>Explore</span>
 
-                  <span>→</span>
+                  <span
+                    className="
+                transition-transform
+                duration-300
+                group-hover:translate-x-0.5
+              "
+                  >
+                    →
+                  </span>
                 </button>
               </div>
 
               {/* =================================
-                CORNER DETAILS
-            ================================= */}
+            CORNER DETAILS
+        ================================= */}
 
               <div
                 className="
-                pointer-events-none
-                absolute
-                bottom-4
-                left-4
-                h-7
-                w-7
-                border-b
-                border-l
-                border-[#d6b477]/30
-              "
+            pointer-events-none
+            absolute
+            bottom-3
+            left-3
+            h-5
+            w-5
+            border-b
+            border-l
+            border-[#d6b477]/30
+
+            sm:bottom-4
+            sm:left-4
+            sm:h-6
+            sm:w-6
+
+            md:h-7
+            md:w-7
+          "
               />
 
               <div
                 className="
-                pointer-events-none
-                absolute
-                right-4
-                top-4
-                h-7
-                w-7
-                border-r
-                border-t
-                border-[#d6b477]/30
-              "
+            pointer-events-none
+            absolute
+            right-3
+            top-3
+            h-5
+            w-5
+            border-r
+            border-t
+            border-[#d6b477]/30
+
+            sm:right-4
+            sm:top-4
+            sm:h-6
+            sm:w-6
+
+            md:h-7
+            md:w-7
+          "
               />
             </div>
           ))}

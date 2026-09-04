@@ -52,14 +52,16 @@ const FeaturedCollection = ({ ringWrapperRef }) => {
         LEFT CONTENT
     ===================================== */}
 
-        <div className="flex w-[30%] flex-col items-start text-white">
+        <div className="flex xl:w-[30%] flex-col items-start text-white">
           {/* Label */}
           <div className="mb-6 flex items-center gap-3">
             <span className="h-px w-8 bg-[#d6b477]/70" />
 
             <span
               className="
-            text-[10px]
+            xl:text-[10px]
+            md:text-[8px]
+            text-[6px]
             font-medium
             uppercase
             tracking-[0.32em]
@@ -74,13 +76,12 @@ const FeaturedCollection = ({ ringWrapperRef }) => {
           <h2
             className="
           max-w-md
-          text-4xl
+          xl:text-4xl
+          md:text-2xl
           font-light
           leading-[1.08]
           tracking-[-0.035em]
           text-white
-          md:text-5xl
-          lg:text-[54px]
         "
           >
             Designed to Be
@@ -289,7 +290,9 @@ const FeaturedCollection = ({ ringWrapperRef }) => {
 
             <span
               className="
-            text-[10px]
+          xl:text-[10px]
+            md:text-[8px]
+            text-[6px]
             font-medium
             uppercase
             tracking-[0.32em]
@@ -304,13 +307,13 @@ const FeaturedCollection = ({ ringWrapperRef }) => {
           <h2
             className="
           max-w-md
-          text-4xl
+          xl:text-4xl
+          md:text-2xl
           font-light
           leading-[1.08]
           tracking-[-0.035em]
           text-white
-          md:text-5xl
-          lg:text-[54px]
+         
         "
           >
             Designed to Be

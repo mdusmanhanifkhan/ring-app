@@ -1,10 +1,9 @@
-
-const Craftsmanship = ({sunCircleRef, ringWrapperRef}) => {
+const Craftsmanship = ({ sunCircleRef, ringWrapperRef }) => {
   return (
-      <section className="relative min-h-screen w-full overflow-hidden">
-        {/* subtle background atmosphere */}
-        <div
-          className="
+    <section className="relative min-h-screen w-full overflow-hidden">
+      {/* subtle background atmosphere */}
+      <div
+        className="
       pointer-events-none
       absolute
       left-1/2
@@ -17,14 +16,14 @@ const Craftsmanship = ({sunCircleRef, ringWrapperRef}) => {
       bg-[#c9a86a]/[0.035]
       blur-[140px]
     "
-        />
+      />
 
-        {/* =========================================
+      {/* =========================================
       TOP CONTENT
   ========================================= */}
 
-        <div
-          className="
+      <div
+        className="
       relative
       z-20
       mx-auto
@@ -36,31 +35,31 @@ const Craftsmanship = ({sunCircleRef, ringWrapperRef}) => {
       pt-10
       text-center
     "
-        >
-          {/* Small Label */}
+      >
+        {/* Small Label */}
 
-          <div className="mb-5 flex items-center gap-3">
-            <span className="h-px w-10 bg-[#c9a86a]" />
+        <div className="mb-5 flex items-center gap-3">
+          <span className="h-px w-10 bg-[#c9a86a]" />
 
-            <span
-              className="
+          <span
+            className="
           text-[11px]
           font-medium
           uppercase
           tracking-[0.28em]
           text-[#c9a86a]
         "
-            >
-              The Art of Craftsmanship
-            </span>
+          >
+            The Art of Craftsmanship
+          </span>
 
-            <span className="h-px w-10 bg-[#c9a86a]" />
-          </div>
+          <span className="h-px w-10 bg-[#c9a86a]" />
+        </div>
 
-          {/* Heading */}
+        {/* Heading */}
 
-          <h2
-            className="
+        <h2
+          className="
         text-5xl
         font-light
         leading-[1.05]
@@ -68,28 +67,25 @@ const Craftsmanship = ({sunCircleRef, ringWrapperRef}) => {
         text-white
         md:text-6xl
       "
-          >
-            Crafted to
-            <span className="font-serif italic text-[#d6b477]">
-              {" "}
-              Perfection
-            </span>
-          </h2>
+        >
+          Crafted to
+          <span className="font-serif italic text-[#d6b477]"> Perfection</span>
+        </h2>
 
-          {/* Small decorative line */}
+        {/* Small decorative line */}
 
-          <div className="mt-5 flex items-center gap-3">
-            <span className="h-px w-14 bg-[#c9a86a]/40" />
+        <div className="mt-5 flex items-center gap-3">
+          <span className="h-px w-14 bg-[#c9a86a]/40" />
 
-            <span className="text-[10px] text-[#d6b477]">✦</span>
+          <span className="text-[10px] text-[#d6b477]">✦</span>
 
-            <span className="h-px w-14 bg-[#c9a86a]/40" />
-          </div>
+          <span className="h-px w-14 bg-[#c9a86a]/40" />
+        </div>
 
-          {/* Description */}
+        {/* Description */}
 
-          <p
-            className="
+        <p
+          className="
         mt-6
         max-w-lg
         text-[14px]
@@ -98,18 +94,18 @@ const Craftsmanship = ({sunCircleRef, ringWrapperRef}) => {
         tracking-wide
         text-slate-300
       "
-          >
-            From the finest materials to masterful craftsmanship, every ring is
-            a symbol of dedication, passion, and timeless elegance.
-          </p>
-        </div>
+        >
+          From the finest materials to masterful craftsmanship, every ring is a
+          symbol of dedication, passion, and timeless elegance.
+        </p>
+      </div>
 
-        {/* =========================================
+      {/* =========================================
       RING + ECLIPSE
   ========================================= */}
 
-        <div
-          className="
+      <div
+        className="
       relative
       mx-auto
       mt-2
@@ -118,19 +114,23 @@ const Craftsmanship = ({sunCircleRef, ringWrapperRef}) => {
       md:h-[600px]
       md:w-[600px]
     "
-        >
-          {/* =====================================
+      >
+        {/* =====================================
         ECLIPSE GLOW
     ===================================== */}
 
-          <div
-            ref={sunCircleRef}
-            className="
+        <div
+          ref={sunCircleRef}
+          className="
         absolute
         left-1/2
         top-[52%]
-        h-[420px]
-        w-[420px]
+        h-[300px]
+        w-[300px]
+        md:w-[370px]
+        md:h-[370px]
+        xl:h-[420px]
+        xl:w-[420px]
         -translate-x-1/2
         -translate-y-1/2
         rounded-full
@@ -139,23 +139,23 @@ const Craftsmanship = ({sunCircleRef, ringWrapperRef}) => {
         pointer-events-none
         z-0
       "
-          >
-            {/* Main golden aura */}
+        >
+          {/* Main golden aura */}
 
-            <div
-              className="
+          <div
+            className="
           absolute
           inset-0
           rounded-full
           bg-[radial-gradient(circle,rgba(214,180,119,0.08)_35%,rgba(214,180,119,0.32)_58%,rgba(214,180,119,0.12)_70%,transparent_78%)]
           blur-xl
         "
-            />
+          />
 
-            {/* Bright eclipse ring */}
+          {/* Bright eclipse ring */}
 
-            <div
-              className="
+          <div
+            className="
           absolute
           inset-[45px]
           rounded-full
@@ -163,12 +163,12 @@ const Craftsmanship = ({sunCircleRef, ringWrapperRef}) => {
           border-[#f3d49a]
           shadow-[0_0_20px_8px_rgba(214,180,119,0.55),0_0_70px_25px_rgba(214,180,119,0.28)]
         "
-            />
+          />
 
-            {/* Outer light */}
+          {/* Outer light */}
 
-            <div
-              className="
+          <div
+            className="
           absolute
           -inset-[30px]
           rounded-full
@@ -176,12 +176,12 @@ const Craftsmanship = ({sunCircleRef, ringWrapperRef}) => {
           border-[#d6b477]/30
           blur-md
         "
-            />
+          />
 
-            {/* Far outer glow */}
+          {/* Far outer glow */}
 
-            <div
-              className="
+          <div
+            className="
           absolute
           -inset-[80px]
           rounded-full
@@ -189,16 +189,16 @@ const Craftsmanship = ({sunCircleRef, ringWrapperRef}) => {
           border-[#d6b477]/10
           blur-2xl
         "
-            />
-          </div>
+          />
+        </div>
 
-          {/* =====================================
+        {/* =====================================
         3D RING
     ===================================== */}
 
-          <div
-            ref={ringWrapperRef}
-            className="
+        <div
+          ref={ringWrapperRef}
+          className="
         absolute
         left-1/2
         top-[53%]
@@ -211,8 +211,8 @@ const Craftsmanship = ({sunCircleRef, ringWrapperRef}) => {
         items-center
         justify-center
       "
-          >
-            {/* 
+        >
+          {/* 
         PUT YOUR EXISTING 3D CANVAS / RING MODEL HERE
 
         Example:
@@ -221,14 +221,14 @@ const Craftsmanship = ({sunCircleRef, ringWrapperRef}) => {
           ...
         </Canvas>
       */}
-          </div>
+        </div>
 
-          {/* =====================================
+        {/* =====================================
         BOTTOM GOLDEN LIGHT
     ===================================== */}
 
-          <div
-            className="
+        <div
+          className="
         pointer-events-none
         absolute
         bottom-[2%]
@@ -241,10 +241,10 @@ const Craftsmanship = ({sunCircleRef, ringWrapperRef}) => {
         bg-[#d6b477]/20
         blur-[55px]
       "
-          />
-        </div>
-      </section>
-  )
-}
+        />
+      </div>
+    </section>
+  );
+};
 
-export default Craftsmanship
+export default Craftsmanship;
