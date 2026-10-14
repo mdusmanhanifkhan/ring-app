@@ -1,6 +1,6 @@
 const CraftedToPerfection = () => {
   return (
-    <section className="relative overflow-hidden bg-[#111111] py-16 sm:py-20 md:py-24 lg:py-28">
+    <section className="relative overflow-hidden bg-[#111111] sm:py-20 md:py-24 lg:py-28">
       {/* Background atmosphere */}
       <div
         className="

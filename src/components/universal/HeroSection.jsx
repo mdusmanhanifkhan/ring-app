@@ -11,46 +11,79 @@ const HeroSection = () => {
   const ringRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        defaults: {
-          ease: "none",
-        },
+    const mm = gsap.matchMedia();
 
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "+=3000",
-          scrub: true,
-        },
-      });
+    mm.add(
+      {
+        desktop: "(min-width: 768px)",
+        mobile: "(max-width: 767px)",
+      },
+      (context) => {
+        const { desktop } = context.conditions;
 
-      tl.to(ringRef.current, {
-        x: 400,
-        y: 600,
-      });
+        const tl = gsap.timeline({
+          defaults: {
+            ease: "none",
+          },
 
-      tl.to(ringRef.current, {
-        x: -30,
-        y: 1300,
-      });
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "+=3000",
+            scrub: true,
+          },
+        });
 
-      tl.to(ringRef.current, {
-        x: 0,
-        y: 1950,
-      });
+        if (desktop) {
+          // Desktop
+          tl.to(ringRef.current, {
+            x: 400,
+            y: 600,
+          })
+            .to(ringRef.current, {
+              x: 0,
+              y: 1300,
+            })
+            .to(ringRef.current, {
+              x: 0,
+              y: 1950,
+            })
+            .to(ringRef.current, {
+              x: 0,
+              y: 2800,
+            });
+        } else {
+          // Mobile
+          tl.to(ringRef.current, {
+            x: 0,
+            y: 800,
+          })
+            .to(ringRef.current, {
+              x: 0,
+              y: 1400,
+            })
+            .to(ringRef.current, {
+              x: 0,
+              y: 1500,
+            })
+            .to(ringRef.current, {
+              x: 0,
+              y: 1500,
+            })
+            .to(ringRef.current, {
+              x: 0,
+              y: 1500,
+            });
+        }
+      },
+      sectionRef,
+    );
 
-      tl.to(ringRef.current, {
-        x: 0,
-        y: 2600,
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (
-    <div ref={sectionRef} className="relative h-[80vh] md:h-screen w-full">
+    <div ref={sectionRef} className="relative h-[60vh] md:h-screen w-full">
       {/* Background Glow */}
       <div
         className="
@@ -119,7 +152,7 @@ const HeroSection = () => {
       <div className="relative h-full w-full">
         <div
           ref={ringRef}
-          className="absolute -top-48 md:-top-80 z-40 h-full w-full scale-[0.9] md:scale-100"
+          className="absolute -top-32 md:-top-80 z-10 md:z-40 h-full w-full scale-[0.9] md:scale-100"
         >
           <RingModel />
         </div>

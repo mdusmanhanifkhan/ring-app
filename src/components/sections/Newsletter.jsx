@@ -9,13 +9,9 @@ const Newsletter = () => {
         overflow-hidden
         bg-[#111111]
         px-4
-        py-16
-
         sm:px-6
         sm:py-20
-
         md:py-24
-
         lg:px-8
         lg:py-28
       "
@@ -373,9 +369,7 @@ const Newsletter = () => {
                   text-black
                   transition-all
                   duration-300
-
                   sm:w-auto
-
                   hover:bg-[#d6b477]
                   hover:shadow-[0_0_30px_rgba(214,180,119,0.15)]
                 "

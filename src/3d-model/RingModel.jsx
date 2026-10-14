@@ -4,7 +4,7 @@ import { Model } from "./Model";
 
 const RingModel = () => {
   return (
-    <Canvas>
+    <Canvas style={{ touchAction: "none", pointerEvents: "none" }}>
       <ambientLight intensity={0.3} />
       <directionalLight position={[10, 10, 5]} intensity={5} />
       <pointLight position={[-10, -10, -10]} intensity={5} />

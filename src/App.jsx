@@ -15,7 +15,7 @@ import Header from "./components/universal/Header";
 
 function App() {
   const eclipseSectionRef = useRef(null);
-  const sunCircleRef = useRef(null);
+  // const sunCircleRef = useRef(null);
   const ringWrapperRef = useRef(null);
 
   const galleryRef = useRef(null);
@@ -56,32 +56,32 @@ function App() {
         },
       );
 
-      tl.fromTo(
-        sunCircleRef.current,
-        {
-          scale: 1.4,
-          opacity: 0,
-        },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.25,
-          ease: "none",
-        },
-        "<",
-      );
+      // tl.fromTo(
+      //   sunCircleRef.current,
+      //   {
+      //     scale: 1.4,
+      //     opacity: 0,
+      //   },
+      //   {
+      //     scale: 1,
+      //     opacity: 1,
+      //     duration: 0.25,
+      //     ease: "none",
+      //   },
+      //   "<",
+      // );
 
-      tl.to(sunCircleRef.current, {
-        scale: 1.5,
-        duration: 0.2,
-        ease: "none",
-      });
+      // tl.to(sunCircleRef.current, {
+      //   scale: 1.5,
+      //   duration: 0.2,
+      //   ease: "none",
+      // });
 
-      tl.to(sunCircleRef.current, {
-        scale: 1.55,
-        duration: 0.2,
-        ease: "none",
-      });
+      // tl.to(sunCircleRef.current, {
+      //   scale: 1.55,
+      //   duration: 0.2,
+      //   ease: "none",
+      // });
 
       // ==========================================
       // HORIZONTAL PRODUCT SCROLL
@@ -125,16 +125,17 @@ function App() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-30 overflow-clip relative h-auto">
+    <div className="flex flex-col md:gap-30 overflow-clip relative h-auto">
       <Glow style={"-right-80 top-237.5 w-142 h-142"} />
       <Glow style={"-left-80 top-362.5 w-100 h-100"} />
+
       <div className="h-full w-full">
         <Header />
         <HeroSection />
       </div>
       <CollectionIntro />
       <Craftsmanship
-        sunCircleRef={sunCircleRef}
+        // sunCircleRef={sunCircleRef}
         ringWrapperRef={ringWrapperRef}
       />
       <FeaturedCollection ringWrapperRef={ringWrapperRef} />
