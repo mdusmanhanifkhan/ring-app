@@ -14,6 +14,8 @@ const Newsletter = () => {
         md:py-24
         lg:px-8
         lg:py-28
+        pb-5
+        md:pb-0
       "
     >
       {/* =====================================
@@ -59,9 +61,7 @@ const Newsletter = () => {
             border
             border-white/[0.07]
             bg-[#151515]
-
             sm:rounded-[24px]
-
             lg:min-h-[420px]
             lg:flex-row
             lg:rounded-[28px]
@@ -330,7 +330,7 @@ const Newsletter = () => {
                 type="email"
                 placeholder="Your email address"
                 className="
-                  h-12
+                py-2.5
                   min-w-0
                   flex-1
                   rounded-full
@@ -343,7 +343,6 @@ const Newsletter = () => {
                   outline-none
                   placeholder:text-white/30
                   transition
-
                   focus:border-[#d6b477]/50
                   focus:bg-white/[0.05]
                 "
